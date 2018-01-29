@@ -39,8 +39,12 @@ class ViewController: UIViewController, CSDraggableDelegate {
     
     // MARK: - DRAW GRID
     
-    /// gridSize is the amount of pixels between lines
-    func drawGrid(gridSize: Int, bigGridSize: Int) {
+    func drawGrid(gridSize: Int) {
+        let primaryGridSize = gridSize * 5
+        let secondaryLineWidth: CGFloat = 1
+        let primaryLineWidth: CGFloat = 2
+        let lineColor: CGColor = UIColor.gray.cgColor
+        
         // draw vertical lines
         for x in 0...Int(self.view.bounds.maxX) {
             if x % gridSize == 0 {
@@ -50,13 +54,13 @@ class ViewController: UIViewController, CSDraggableDelegate {
                 
                 let shapeLayer = CAShapeLayer()
                 shapeLayer.path = path.cgPath
-                shapeLayer.strokeColor = UIColor.gray.cgColor
+                shapeLayer.strokeColor = lineColor
                 shapeLayer.fillColor = UIColor.clear.cgColor
                 
-                if x % bigGridSize == 0 {
-                    shapeLayer.lineWidth = 2
+                if x % primaryGridSize == 0 {
+                    shapeLayer.lineWidth = primaryLineWidth
                 } else {
-                    shapeLayer.lineWidth = 1
+                    shapeLayer.lineWidth = secondaryLineWidth
                 }
                 
                 self.view.layer.addSublayer(shapeLayer)
@@ -72,13 +76,13 @@ class ViewController: UIViewController, CSDraggableDelegate {
                 
                 let shapeLayer = CAShapeLayer()
                 shapeLayer.path = path.cgPath
-                shapeLayer.strokeColor = UIColor.gray.cgColor
+                shapeLayer.strokeColor = lineColor
                 shapeLayer.fillColor = UIColor.clear.cgColor
                 
-                if y % bigGridSize == 0 {
-                    shapeLayer.lineWidth = 2
+                if y % primaryGridSize == 0 {
+                    shapeLayer.lineWidth = primaryLineWidth
                 } else {
-                    shapeLayer.lineWidth = 1
+                    shapeLayer.lineWidth = secondaryLineWidth
                 }
                     
                 self.view.layer.addSublayer(shapeLayer)
@@ -92,7 +96,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.drawGrid(gridSize: 25, bigGridSize: 125)
+        self.drawGrid(gridSize: 25)
         // Do any additional setup after loading the view, typically from a nib.
         self.dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         for aView in self.view.subviews {
