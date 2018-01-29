@@ -10,6 +10,7 @@
 		03FF2BF31C3F7C9A500ACDE8 /* Pods_circuit_studioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1B18BCAC3A87BC9819FAD4 /* Pods_circuit_studioTests.framework */; };
 		7BF936EE8644E5953E213943 /* Pods_circuit_studio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */; };
 		DA08BDC3229B319081FD27BF /* Pods_circuit_studioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */; };
+		E930FBAC201EC749006F6A2A /* Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930FBAB201EC749006F6A2A /* Draggable.swift */; };
 		E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA72011214100C9CC9E /* AppDelegate.swift */; };
 		E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA92011214100C9CC9E /* ViewController.swift */; };
 		E9335DAD2011214100C9CC9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335DAB2011214100C9CC9E /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		6E1B18BCAC3A87BC9819FAD4 /* Pods_circuit_studioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72FE4C2346353D8998EB6C2E /* Pods-circuit-studio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-circuit-studio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-circuit-studio/Pods-circuit-studio.debug.xcconfig"; sourceTree = "<group>"; };
 		A66CA76F94C6C6D4DD19E3B2 /* Pods-circuit-studioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-circuit-studioTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-circuit-studioTests/Pods-circuit-studioTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E930FBAB201EC749006F6A2A /* Draggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draggable.swift; sourceTree = "<group>"; };
 		E9335DA42011214100C9CC9E /* circuit-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "circuit-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DA72011214100C9CC9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9335DA92011214100C9CC9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E930FBAA201EC737006F6A2A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E930FBAB201EC749006F6A2A /* Draggable.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		E9335D9B2011214100C9CC9E = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +136,7 @@
 		E9335DA62011214100C9CC9E /* circuit-studio */ = {
 			isa = PBXGroup;
 			children = (
+				E930FBAA201EC737006F6A2A /* Models */,
 				E9335DA72011214100C9CC9E /* AppDelegate.swift */,
 				E9335DA92011214100C9CC9E /* ViewController.swift */,
 				E9335DAB2011214100C9CC9E /* Main.storyboard */,
@@ -461,6 +472,7 @@
 				E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */,
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
+				E930FBAC201EC749006F6A2A /* Draggable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
