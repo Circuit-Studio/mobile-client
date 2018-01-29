@@ -37,12 +37,51 @@ class ViewController: UIViewController, CSDraggableDelegate {
         snapBehavior.snapPoint = snapPosition
     }
     
+    // MARK: - DRAW GRID
+    
+    func drawGrid(gridSize: Int) {
+        // draw vertical lines
+        for x in 0...Int(self.view.bounds.maxX) {
+            if x % gridSize == 0 {
+                let path = UIBezierPath()
+                path.move(to: CGPoint(x: CGFloat(x), y: 0))
+                path.addLine(to: CGPoint(x: CGFloat(x), y: self.view.bounds.maxY))
+                
+                let shapeLayer = CAShapeLayer()
+                shapeLayer.path = path.cgPath
+                shapeLayer.strokeColor = UIColor.gray.cgColor
+                shapeLayer.fillColor = UIColor.clear.cgColor
+                shapeLayer.lineWidth = 1
+                
+                self.view.layer.addSublayer(shapeLayer)
+            }
+        }
+        
+        // draw horizontal lines
+        for y in 0...Int(self.view.bounds.maxY) {
+            if y % gridSize == 0 {
+                let path = UIBezierPath()
+                path.move(to: CGPoint(x: 0, y: CGFloat(y)))
+                path.addLine(to: CGPoint(x: self.view.bounds.maxX, y: CGFloat(y)))
+                
+                let shapeLayer = CAShapeLayer()
+                shapeLayer.path = path.cgPath
+                shapeLayer.strokeColor = UIColor.gray.cgColor
+                shapeLayer.fillColor = UIColor.clear.cgColor
+                shapeLayer.lineWidth = 1
+                
+                self.view.layer.addSublayer(shapeLayer)
+            }
+        }
+    }
+    
     // MARK: - IBACTIONS
     
     // MARK: - LIFE CYCLE
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.drawGrid(gridSize: 25)
         // Do any additional setup after loading the view, typically from a nib.
         self.dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         for aView in self.view.subviews {
