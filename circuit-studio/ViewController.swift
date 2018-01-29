@@ -39,7 +39,8 @@ class ViewController: UIViewController, CSDraggableDelegate {
     
     // MARK: - DRAW GRID
     
-    func drawGrid(gridSize: Int) {
+    /// gridSize is the amount of pixels between lines
+    func drawGrid(gridSize: Int, bigGridSize: Int) {
         // draw vertical lines
         for x in 0...Int(self.view.bounds.maxX) {
             if x % gridSize == 0 {
@@ -51,7 +52,12 @@ class ViewController: UIViewController, CSDraggableDelegate {
                 shapeLayer.path = path.cgPath
                 shapeLayer.strokeColor = UIColor.gray.cgColor
                 shapeLayer.fillColor = UIColor.clear.cgColor
-                shapeLayer.lineWidth = 1
+                
+                if x % bigGridSize == 0 {
+                    shapeLayer.lineWidth = 2
+                } else {
+                    shapeLayer.lineWidth = 1
+                }
                 
                 self.view.layer.addSublayer(shapeLayer)
             }
@@ -68,8 +74,13 @@ class ViewController: UIViewController, CSDraggableDelegate {
                 shapeLayer.path = path.cgPath
                 shapeLayer.strokeColor = UIColor.gray.cgColor
                 shapeLayer.fillColor = UIColor.clear.cgColor
-                shapeLayer.lineWidth = 1
                 
+                if y % bigGridSize == 0 {
+                    shapeLayer.lineWidth = 2
+                } else {
+                    shapeLayer.lineWidth = 1
+                }
+                    
                 self.view.layer.addSublayer(shapeLayer)
             }
         }
@@ -81,7 +92,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.drawGrid(gridSize: 25)
+        self.drawGrid(gridSize: 25, bigGridSize: 125)
         // Do any additional setup after loading the view, typically from a nib.
         self.dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         for aView in self.view.subviews {
