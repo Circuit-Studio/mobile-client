@@ -96,7 +96,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.drawGrid(gridSize: 25)
+        self.drawGrid(gridSize: 32)
         // Do any additional setup after loading the view, typically from a nib.
         self.dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         for aView in self.view.subviews {
