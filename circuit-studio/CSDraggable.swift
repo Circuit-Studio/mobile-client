@@ -29,6 +29,14 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     private var panGesture: UIPanGestureRecognizer
     
+    public var originPoint: CGPoint?
+    
+    public var snapGridSize: CGSize? = CGSize(width: 64, height: 64)
+    
+    public var snapWhileDragging: Bool = true
+    
+    private var previoudFactoredGridPosition: (x: Int, y: Int)?
+    
     @IBOutlet public weak var delegate: CSDraggableDelegate?
     
     // MARK: - RETURN VALUES
@@ -66,21 +74,73 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
             delegate?.draggable?(view: self, willBeginWith: gesture)
             //Do some code
             
+            originPoint = self.frame.origin
+            
             delegate?.draggable?(view: self, didBeginWith: gesture)
         case .changed:
             delegate?.draggable?(view: self, willChangeWith: gesture)
             
-            self.center = CGPoint(x: self.center.x + transformation.x, y: self.center.y + transformation.y)
-            gesture.setTranslation(CGPoint.zero, in: mySuperview)
+            if snapWhileDragging {
+                guard
+                    let gridSize = snapGridSize,
+                    let panOrigin = originPoint
+                else { return }
+                
+                let panPosition = CGPoint(x: panOrigin.x + transformation.x, y: panOrigin.y + transformation.y)
+                let currentFactoredGridPosition: (x: Int, y: Int) = (
+                    Int(round(panPosition.x / gridSize.width)),
+                    Int(round(panPosition.y / gridSize.height))
+                )
+                if let perviousGridPosition = previoudFactoredGridPosition {
+                    if perviousGridPosition != currentFactoredGridPosition {
+                        let animator = UIViewPropertyAnimator()
+                        animator.addAnimations { [unowned self] in
+                            let snapPosition = CGPoint(
+                                x: CGFloat(currentFactoredGridPosition.x) * gridSize.width,
+                                y: CGFloat(currentFactoredGridPosition.y) * gridSize.height
+                            )
+                            self.frame.origin = snapPosition
+                        }
+                        animator.startAnimation()
+                    }
+                }
+                previoudFactoredGridPosition = currentFactoredGridPosition
+            } else {
+                self.center = CGPoint(x: self.center.x + transformation.x, y: self.center.y + transformation.y)
+                gesture.setTranslation(CGPoint.zero, in: mySuperview)
+            }
             
             delegate?.draggable?(view: self, didChangeWith: gesture)
         case .ended:
             delegate?.draggable?(view: self, willEndWith: gesture)
             //Do some code
             
+            snapToGrid()
+            
             delegate?.draggable?(view: self, didEndWith: gesture)
         default: break
         }
+    }
+    
+    private func snapToGrid() {
+        guard
+            let gridSize = self.snapGridSize
+            else { return }
+        
+        let animator = UIViewPropertyAnimator()
+        animator.addAnimations { [unowned self] in
+            let viewOrigin = self.frame.origin
+            let gridPosition: (x: Int, y: Int) = (
+                Int(round(viewOrigin.x / gridSize.width)),
+                Int(round(viewOrigin.y / gridSize.height))
+            )
+            let snapPosition = CGPoint(
+                x: CGFloat(gridPosition.x) * gridSize.width,
+                y: CGFloat(gridPosition.y) * gridSize.height
+            )
+            self.frame.origin = snapPosition
+        }
+        animator.startAnimation()
     }
     
     // MARK: - IBACTIONS
