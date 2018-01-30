@@ -39,6 +39,8 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     @IBOutlet public weak var delegate: CSDraggableDelegate?
     
+    @IBOutlet public lazy var cartesianPlane = self.superview
+    
     // MARK: - RETURN VALUES
     
     public init(delegate: CSDraggableDelegate? = nil) {
@@ -66,7 +68,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     // MARK: - VOID METHODS
     
     @objc private func panGesture(gesture: UIPanGestureRecognizer) {
-        guard let mySuperview = self.superview else { return }
+        guard let mySuperview = cartesianPlane else { return }
         
         let transformation = gesture.translation(in: mySuperview)
         switch gesture.state {
@@ -74,7 +76,13 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
             delegate?.draggable?(view: self, willBeginWith: gesture)
             //Do some code
             
-            originPoint = self.frame.origin
+            guard
+                let containerView = self.cartesianPlane,
+                let superview = self.superview else {
+                    return
+            }
+            
+            originPoint = containerView.convert(self.frame.origin, from: superview)
             
             delegate?.draggable?(view: self, didBeginWith: gesture)
         case .changed:
@@ -83,7 +91,9 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
             if snapWhileDragging {
                 guard
                     let gridSize = snapGridSize,
-                    let panOrigin = originPoint
+                    let panOrigin = originPoint,
+                    let containerView = self.cartesianPlane,
+                    let superview = self.superview
                 else { return }
                 
                 let panPosition = CGPoint(x: panOrigin.x + transformation.x, y: panOrigin.y + transformation.y)
@@ -99,7 +109,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
                                 x: CGFloat(currentFactoredGridPosition.x) * gridSize.width,
                                 y: CGFloat(currentFactoredGridPosition.y) * gridSize.height
                             )
-                            self.frame.origin = snapPosition
+                            self.frame.origin = superview.convert(snapPosition, from: containerView)
                         }
                         animator.startAnimation()
                     }
@@ -124,12 +134,14 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     private func snapToGrid() {
         guard
-            let gridSize = self.snapGridSize
+            let gridSize = self.snapGridSize,
+            let containerView = self.cartesianPlane,
+            let superview = self.superview
             else { return }
         
         let animator = UIViewPropertyAnimator()
         animator.addAnimations { [unowned self] in
-            let viewOrigin = self.frame.origin
+            let viewOrigin = containerView.convert(self.frame.origin, from: superview)
             let gridPosition: (x: Int, y: Int) = (
                 Int(round(viewOrigin.x / gridSize.width)),
                 Int(round(viewOrigin.y / gridSize.height))
@@ -138,7 +150,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
                 x: CGFloat(gridPosition.x) * gridSize.width,
                 y: CGFloat(gridPosition.y) * gridSize.height
             )
-            self.frame.origin = snapPosition
+            self.frame.origin = superview.convert(snapPosition, from: containerView)
         }
         animator.startAnimation()
     }
