@@ -105,6 +105,55 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE6B8BB72020F88200415E0C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */,
+				E9335DB62011214100C9CC9E /* Info.plist */,
+				E9335DAE2011214100C9CC9E /* circuit_studio.xcdatamodeld */,
+				E9335DA72011214100C9CC9E /* AppDelegate.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE6B8BB82020F89800415E0C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9335DA92011214100C9CC9E /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AE6B8BB92020F8A500415E0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE6B8BB42020F4B400415E0C /* GridView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AE6B8BBA2020F8AC00415E0C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E9335DAB2011214100C9CC9E /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		AE6B8BBB2020F8B700415E0C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		AE6B8BBC2020F8BC00415E0C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		E930FBAA201EC737006F6A2A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,15 +187,14 @@
 		E9335DA62011214100C9CC9E /* circuit-studio */ = {
 			isa = PBXGroup;
 			children = (
+				AE6B8BBC2020F8BC00415E0C /* Helpers */,
+				AE6B8BBB2020F8B700415E0C /* Extensions */,
+				AE6B8BBA2020F8AC00415E0C /* Storyboards */,
+				AE6B8BB92020F8A500415E0C /* Views */,
+				AE6B8BB82020F89800415E0C /* View Controllers */,
+				AE6B8BB72020F88200415E0C /* Supporting Files */,
 				E930FBAA201EC737006F6A2A /* Models */,
-				E9335DA72011214100C9CC9E /* AppDelegate.swift */,
-				E9335DA92011214100C9CC9E /* ViewController.swift */,
-				AE6B8BB42020F4B400415E0C /* GridView.swift */,
-				E9335DAB2011214100C9CC9E /* Main.storyboard */,
 				E9335DB12011214100C9CC9E /* Assets.xcassets */,
-				E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */,
-				E9335DB62011214100C9CC9E /* Info.plist */,
-				E9335DAE2011214100C9CC9E /* circuit_studio.xcdatamodeld */,
 			);
 			path = "circuit-studio";
 			sourceTree = "<group>";
