@@ -8,7 +8,26 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CSDraggableDelegate {
+    
+    @IBOutlet var toolbarComponents: [CSDraggable]!
+    
+    private var gridSize: CGSize {
+        let gridView = self.view as! GridView
+        let size = CGFloat(gridView.minorGridSize)
+        
+        return CGSize(width: size, height: size)
+    }
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - VOID METHODS
+    
+    // MARK: CSDraggable Delegate
+    
+    // MARK: - IBACTIONS
+    
+    // MARK: - LIFE CYCLE
 
     override func viewDidLoad() {
         super.viewDidLoad()

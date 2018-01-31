@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		03FF2BF31C3F7C9A500ACDE8 /* Pods_circuit_studioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1B18BCAC3A87BC9819FAD4 /* Pods_circuit_studioTests.framework */; };
 		7BF936EE8644E5953E213943 /* Pods_circuit_studio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */; };
+		AE6B8BB52020F4B400415E0C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6B8BB42020F4B400415E0C /* GridView.swift */; };
 		DA08BDC3229B319081FD27BF /* Pods_circuit_studioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */; };
+		E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */; };
 		E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA72011214100C9CC9E /* AppDelegate.swift */; };
 		E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA92011214100C9CC9E /* ViewController.swift */; };
 		E9335DAD2011214100C9CC9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335DAB2011214100C9CC9E /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 		6E1B18BCAC3A87BC9819FAD4 /* Pods_circuit_studioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72FE4C2346353D8998EB6C2E /* Pods-circuit-studio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-circuit-studio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-circuit-studio/Pods-circuit-studio.debug.xcconfig"; sourceTree = "<group>"; };
 		A66CA76F94C6C6D4DD19E3B2 /* Pods-circuit-studioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-circuit-studioTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-circuit-studioTests/Pods-circuit-studioTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE6B8BB42020F4B400415E0C /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSDraggable.swift; sourceTree = "<group>"; };
 		E9335DA42011214100C9CC9E /* circuit-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "circuit-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DA72011214100C9CC9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9335DA92011214100C9CC9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,63 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE6B8BB72020F88200415E0C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */,
+				E9335DB62011214100C9CC9E /* Info.plist */,
+				E9335DAE2011214100C9CC9E /* circuit_studio.xcdatamodeld */,
+				E9335DA72011214100C9CC9E /* AppDelegate.swift */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE6B8BB82020F89800415E0C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9335DA92011214100C9CC9E /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		AE6B8BB92020F8A500415E0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE6B8BB42020F4B400415E0C /* GridView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AE6B8BBA2020F8AC00415E0C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E9335DAB2011214100C9CC9E /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		AE6B8BBB2020F8B700415E0C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		AE6B8BBC2020F8BC00415E0C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		E930FBAA201EC737006F6A2A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		E9335D9B2011214100C9CC9E = {
 			isa = PBXGroup;
 			children = (
@@ -126,13 +187,14 @@
 		E9335DA62011214100C9CC9E /* circuit-studio */ = {
 			isa = PBXGroup;
 			children = (
-				E9335DA72011214100C9CC9E /* AppDelegate.swift */,
-				E9335DA92011214100C9CC9E /* ViewController.swift */,
-				E9335DAB2011214100C9CC9E /* Main.storyboard */,
+				AE6B8BBC2020F8BC00415E0C /* Helpers */,
+				AE6B8BBB2020F8B700415E0C /* Extensions */,
+				AE6B8BBA2020F8AC00415E0C /* Storyboards */,
+				AE6B8BB92020F8A500415E0C /* Views */,
+				AE6B8BB82020F89800415E0C /* View Controllers */,
+				AE6B8BB72020F88200415E0C /* Supporting Files */,
+				E930FBAA201EC737006F6A2A /* Models */,
 				E9335DB12011214100C9CC9E /* Assets.xcassets */,
-				E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */,
-				E9335DB62011214100C9CC9E /* Info.plist */,
-				E9335DAE2011214100C9CC9E /* circuit_studio.xcdatamodeld */,
 			);
 			path = "circuit-studio";
 			sourceTree = "<group>";
@@ -461,6 +523,8 @@
 				E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */,
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
+				AE6B8BB52020F4B400415E0C /* GridView.swift in Sources */,
+				E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +692,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P4PBGN25JV;
 				INFOPLIST_FILE = "circuit-studio/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.circuit-studio.circuit-studio";
@@ -643,6 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P4PBGN25JV;
 				INFOPLIST_FILE = "circuit-studio/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.circuit-studio.circuit-studio";
