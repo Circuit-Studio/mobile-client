@@ -29,7 +29,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     private var panGesture: UIPanGestureRecognizer
     
-    public var originPoint: CGPoint?
+    public private(set) var startingOrigin: CGPoint?
     
     public var snapGridSize: CGSize? = CGSize(width: 64, height: 64)
     
@@ -54,6 +54,30 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
         self.backgroundColor = .gray
     }
     
+    /**
+     Copies the **size** and **frame.origin** from the *other draggable*. Use
+     mappingToCartesianPlane if the otherDraggable.superview is different from
+     its cartesianPlate
+     
+     - warning: the new instance is added to the cartesian plane, if given
+     
+     - parameter otherDraggable: the draggable to copy
+     
+     - parameter toCartesianView: the view to convert the draggable.origin to
+     */
+    public convenience init(delegate: CSDraggableDelegate? = nil, from otherDraggable: CSDraggable, mappingToCartesianPlane toCartesianView: UIView? = nil) {
+        self.init(delegate: delegate)
+        
+        /* copy the size */
+        self.frame.size = otherDraggable.frame.size
+        
+        /* copy the origin */
+        toCartesianView?.addSubview(self)
+        if let mappedOrigin = toCartesianView?.convert(otherDraggable.frame.origin, from: otherDraggable.superview) {
+            self.frame.origin = mappedOrigin
+        }
+    }
+    
     public required init?(coder aDecoder: NSCoder) {
         self.panGesture = UIPanGestureRecognizer()
         self.delegate = nil
@@ -74,7 +98,6 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
         switch gesture.state {
         case .began:
             delegate?.draggable?(view: self, willBeginWith: gesture)
-            //Do some code
             
             guard
                 let containerView = self.cartesianPlane,
@@ -82,7 +105,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
                     return
             }
             
-            originPoint = containerView.convert(self.frame.origin, from: superview)
+            startingOrigin = containerView.convert(self.frame.origin, from: superview)
             
             delegate?.draggable?(view: self, didBeginWith: gesture)
         case .changed:
@@ -91,7 +114,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
             if snapWhileDragging {
                 guard
                     let gridSize = snapGridSize,
-                    let panOrigin = originPoint,
+                    let panOrigin = startingOrigin,
                     let containerView = self.cartesianPlane,
                     let superview = self.superview
                 else { return }
