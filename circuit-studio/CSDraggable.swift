@@ -24,22 +24,57 @@ import UIKit
 /**
  'Abstract' class of a draggable view with a delegate property to recieve
  messages of begin, change, and end events.
+ 
+ - warning: CSDraggable must contain a self.superview
  */
 public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     private var panGesture: UIPanGestureRecognizer
     
-    public var originPoint: CGPoint?
+    /**
+     Starting point of the draggable's origin point
+     
+     - Warning: CGPoint is saved in the self.cartesianPlane's coordinates
+     system
+     */
+    public private(set) var startingOrigin: CGPoint?
     
-    public var snapGridSize: CGSize? = CGSize(width: 64, height: 64)
+    /** Assign the cell size of snapping. Defaults to nil, thus drag without
+     snapping
+     */
+    public lazy var snapGridSize: CGSize? = self.frame.size
     
+    /**
+     While dragging, snap according the to given snapGridSize
+     
+     - Precondition: snapGridSize must be set
+     */
     public var snapWhileDragging: Bool = true
-    
-    private var previoudFactoredGridPosition: (x: Int, y: Int)?
     
     @IBOutlet public weak var delegate: CSDraggableDelegate?
     
-    @IBOutlet public lazy var cartesianPlane = self.superview
+    @IBOutlet public lazy var cartesianPlane: UIView! = self.superview
+    
+    enum CSDraggableErrors: Error {
+        case NoSuperview
+        
+        var localizedDescription: String {
+            switch self {
+            case .NoSuperview:
+                return "CSDraggable must be contained in a superview"
+            }
+        }
+    }
+    
+    /** last factored location
+     
+     // Grid size
+     let gridSize = CGSize(width: 32, height: 32)
+     factoredGridPosition = .. // for the point self.frame.origin (e.g. 70, 40)
+     //factoredGridPosition = (x: 2, y: 1)
+     
+     */
+    private var previousFactoredGridPosition: (x: Int, y: Int)?
     
     // MARK: - RETURN VALUES
     
@@ -52,6 +87,30 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
         self.panGesture.addTarget(self, action: #selector(CSDraggable.panGesture(gesture:)))
         self.addGestureRecognizer(panGesture)
         self.backgroundColor = .gray
+    }
+    
+    /**
+     Copies the **size** and **frame.origin** from the *other draggable*. Use
+     mappingToCartesianPlane if the otherDraggable.superview is different from
+     its cartesianPlate
+     
+     - warning: the new instance is added to the cartesian plane, if given
+     
+     - parameter otherDraggable: the draggable to copy
+     
+     - parameter toCartesianView: the view to convert the draggable.origin to
+     */
+    public convenience init(delegate: CSDraggableDelegate? = nil, from otherDraggable: CSDraggable, mappingToCartesianPlane toCartesianView: UIView? = nil) {
+        self.init(delegate: delegate)
+        
+        /* copy the size */
+        self.frame.size = otherDraggable.frame.size
+        
+        /* copy the origin */
+        toCartesianView?.addSubview(self)
+        if let mappedOrigin = toCartesianView?.convert(otherDraggable.frame.origin, from: otherDraggable.superview) {
+            self.frame.origin = mappedOrigin
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -67,6 +126,64 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - VOID METHODS
     
+    /**
+     <#Lorem ipsum dolor sit amet.#>
+     - parameter OriginalPoint: the point of origin not the view's center point
+     */
+    public func returnToOriginPosition(animated: Bool, animation: ((_ OriginalPoint: CGPoint) -> ())? = nil) {
+        guard let startingPoint = self.startingOrigin else {
+            return print("previous point not set")
+        }
+        
+        if let animationBlock = animation {
+            let convertedPoint = self.convertPointFromCartesianPlane(point: startingPoint)
+            
+            animationBlock(convertedPoint)
+        } else {
+            if animated {
+                let animator = UIViewPropertyAnimator()
+                animator.addAnimations { [unowned self] in
+                    self.frame.origin = self.convertPointFromCartesianPlane(point: startingPoint)
+                }
+                animator.startAnimation()
+            } else {
+                self.frame.origin = self.convertPointFromCartesianPlane(point: startingPoint)
+            }
+        }
+    }
+    
+    /**
+     Converts the point from the superview's cartesian plane to the
+     self.cartesianPlane
+     
+     - throws: if self is not contained by a superview
+     */
+    private func convertPointToCartesianPlane(point: CGPoint) -> CGPoint {
+        guard
+            let containerView = self.cartesianPlane,
+            let superview = self.superview else {
+                preconditionFailure(CSDraggableErrors.NoSuperview.localizedDescription)
+        }
+        
+        return containerView.convert(point, from: superview)
+    }
+    
+    /**
+     Converts the point from the cartesian plane to self.superview's cartesain
+     plane
+     
+     - throws: if self is not contained by a superview
+     */
+    private func convertPointFromCartesianPlane(point: CGPoint) -> CGPoint {
+        guard
+            let containerView = self.cartesianPlane,
+            let superview = self.superview else {
+                preconditionFailure(CSDraggableErrors.NoSuperview.localizedDescription)
+        }
+        
+        return superview.convert(point, from: containerView)
+    }
+    
     @objc private func panGesture(gesture: UIPanGestureRecognizer) {
         guard let mySuperview = cartesianPlane else { return }
         
@@ -74,47 +191,46 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
         switch gesture.state {
         case .began:
             delegate?.draggable?(view: self, willBeginWith: gesture)
-            //Do some code
             
-            guard
-                let containerView = self.cartesianPlane,
-                let superview = self.superview else {
-                    return
-            }
-            
-            originPoint = containerView.convert(self.frame.origin, from: superview)
+            startingOrigin = convertPointToCartesianPlane(point: self.frame.origin)
             
             delegate?.draggable?(view: self, didBeginWith: gesture)
         case .changed:
             delegate?.draggable?(view: self, willChangeWith: gesture)
             
             if snapWhileDragging {
-                guard
-                    let gridSize = snapGridSize,
-                    let panOrigin = originPoint,
-                    let containerView = self.cartesianPlane,
-                    let superview = self.superview
-                else { return }
+                guard let startingPoint = startingOrigin else {
+                    return print("Previous location not set")
+                }
+                guard let gridSize = self.snapGridSize else {
+                    preconditionFailure("grid size is not set while snapWhileDraggin = true")
+                }
                 
-                let panPosition = CGPoint(x: panOrigin.x + transformation.x, y: panOrigin.y + transformation.y)
+                /** current point of the pan gesture's location */
+                let panPosition = CGPoint(x: startingPoint.x + transformation.x, y: startingPoint.y + transformation.y)
                 let currentFactoredGridPosition: (x: Int, y: Int) = (
                     Int(round(panPosition.x / gridSize.width)),
                     Int(round(panPosition.y / gridSize.height))
                 )
-                if let perviousGridPosition = previoudFactoredGridPosition {
+                
+                if let perviousGridPosition = previousFactoredGridPosition {
                     if perviousGridPosition != currentFactoredGridPosition {
+                        /* snap to the new grid position */
+                        //TODO: func snap(to point: CGPoint) {
                         let animator = UIViewPropertyAnimator()
                         animator.addAnimations { [unowned self] in
                             let snapPosition = CGPoint(
                                 x: CGFloat(currentFactoredGridPosition.x) * gridSize.width,
                                 y: CGFloat(currentFactoredGridPosition.y) * gridSize.height
                             )
-                            self.frame.origin = superview.convert(snapPosition, from: containerView)
+                            self.frame.origin = self.convertPointFromCartesianPlane(point: snapPosition)
                         }
                         animator.startAnimation()
+                        
+                        // }
                     }
                 }
-                previoudFactoredGridPosition = currentFactoredGridPosition
+                previousFactoredGridPosition = currentFactoredGridPosition
             } else {
                 self.center = CGPoint(x: self.center.x + transformation.x, y: self.center.y + transformation.y)
                 gesture.setTranslation(CGPoint.zero, in: mySuperview)
@@ -123,7 +239,6 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
             delegate?.draggable?(view: self, didChangeWith: gesture)
         case .ended:
             delegate?.draggable?(view: self, willEndWith: gesture)
-            //Do some code
             
             snapToGrid()
             
@@ -133,15 +248,13 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     }
     
     private func snapToGrid() {
-        guard
-            let gridSize = self.snapGridSize,
-            let containerView = self.cartesianPlane,
-            let superview = self.superview
-            else { return }
+        guard let gridSize = self.snapGridSize else {
+            preconditionFailure("grid size is not set")
+        }
         
         let animator = UIViewPropertyAnimator()
         animator.addAnimations { [unowned self] in
-            let viewOrigin = containerView.convert(self.frame.origin, from: superview)
+            let viewOrigin = self.convertPointToCartesianPlane(point: self.frame.origin)
             let gridPosition: (x: Int, y: Int) = (
                 Int(round(viewOrigin.x / gridSize.width)),
                 Int(round(viewOrigin.y / gridSize.height))
@@ -150,7 +263,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
                 x: CGFloat(gridPosition.x) * gridSize.width,
                 y: CGFloat(gridPosition.y) * gridSize.height
             )
-            self.frame.origin = superview.convert(snapPosition, from: containerView)
+            self.frame.origin = self.convertPointFromCartesianPlane(point: snapPosition)
         }
         animator.startAnimation()
     }
