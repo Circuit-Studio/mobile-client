@@ -20,6 +20,7 @@
 		E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */; };
 		E9335DC02011214100C9CC9E /* circuit_studioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DBF2011214100C9CC9E /* circuit_studioTests.swift */; };
 		E9335DCB2011214100C9CC9E /* circuit_studioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */; };
+		E989538A2028DFF3000886F5 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98953892028DFF3000886F5 /* RegisterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E9335DC62011214100C9CC9E /* circuit-studioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "circuit-studioUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circuit_studioUITests.swift; sourceTree = "<group>"; };
 		E9335DCC2011214100C9CC9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E98953892028DFF3000886F5 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 		AE6B8BBC2020F8BC00415E0C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E98953892028DFF3000886F5 /* RegisterService.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -453,9 +456,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-circuit-studio/Pods-circuit-studio-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -520,6 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E989538A2028DFF3000886F5 /* RegisterService.swift in Sources */,
 				E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */,
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
@@ -694,6 +707,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P4PBGN25JV;
 				INFOPLIST_FILE = "circuit-studio/Info.plist";
+				KEEP_PRIVATE_EXTERNS = NO;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.circuit-studio.circuit-studio";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -710,6 +724,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P4PBGN25JV;
 				INFOPLIST_FILE = "circuit-studio/Info.plist";
+				KEEP_PRIVATE_EXTERNS = NO;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.circuit-studio.circuit-studio";
 				PRODUCT_NAME = "$(TARGET_NAME)";

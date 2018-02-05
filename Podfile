@@ -6,6 +6,11 @@ target 'circuit-studio' do
   use_frameworks!
 
   # Pods for circuit-studio
+  
+  # Network abstraction layer written in Swift.
+  pod 'Moya', '~> 10.0'
+  
+  pod 'SwiftyJSON'
 
   # Kingfisher is a lightweight library for downloading and caching images from the web.
   ## pod 'Kingfisher', '~> 4.0'

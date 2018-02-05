@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
 class ViewController: UIViewController, CSDraggableDelegate {
+    
+    let apiService = MoyaProvider<RegisterAPI>()
     
     @IBOutlet var toolbarComponents: [CSDraggable]!
     
@@ -54,6 +58,15 @@ class ViewController: UIViewController, CSDraggableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        apiService.request(.Register(username: "ErickES79", password: "mypassword", email: "e@ds.com")) { (result) in
+            switch result {
+            case .success(let response):
+                print(JSON(response.data))
+            case .failure(let err):
+                print(err)
+            }
+        }
+        
     }
 
 }
