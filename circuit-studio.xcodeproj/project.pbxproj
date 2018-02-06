@@ -11,6 +11,10 @@
 		7BF936EE8644E5953E213943 /* Pods_circuit_studio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */; };
 		AE6B8BB52020F4B400415E0C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6B8BB42020F4B400415E0C /* GridView.swift */; };
 		DA08BDC3229B319081FD27BF /* Pods_circuit_studioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */; };
+		E913D49A202A5F1200243BDE /* CircutStudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D499202A5F1200243BDE /* CircutStudioAPI.swift */; };
+		E913D49C202A5FE300243BDE /* CircuitStudioNeworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D49B202A5FE300243BDE /* CircuitStudioNeworkService.swift */; };
+		E913D49E202A609300243BDE /* CircuitStudioStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D49D202A609300243BDE /* CircuitStudioStack.swift */; };
+		E913D4A0202A60A500243BDE /* CircuitStudioStack+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D49F202A60A500243BDE /* CircuitStudioStack+Network.swift */; };
 		E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */; };
 		E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA72011214100C9CC9E /* AppDelegate.swift */; };
 		E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA92011214100C9CC9E /* ViewController.swift */; };
@@ -20,7 +24,6 @@
 		E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */; };
 		E9335DC02011214100C9CC9E /* circuit_studioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DBF2011214100C9CC9E /* circuit_studioTests.swift */; };
 		E9335DCB2011214100C9CC9E /* circuit_studioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */; };
-		E989538A2028DFF3000886F5 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98953892028DFF3000886F5 /* RegisterService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,10 @@
 		72FE4C2346353D8998EB6C2E /* Pods-circuit-studio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-circuit-studio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-circuit-studio/Pods-circuit-studio.debug.xcconfig"; sourceTree = "<group>"; };
 		A66CA76F94C6C6D4DD19E3B2 /* Pods-circuit-studioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-circuit-studioTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-circuit-studioTests/Pods-circuit-studioTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE6B8BB42020F4B400415E0C /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		E913D499202A5F1200243BDE /* CircutStudioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircutStudioAPI.swift; sourceTree = "<group>"; };
+		E913D49B202A5FE300243BDE /* CircuitStudioNeworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitStudioNeworkService.swift; sourceTree = "<group>"; };
+		E913D49D202A609300243BDE /* CircuitStudioStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitStudioStack.swift; sourceTree = "<group>"; };
+		E913D49F202A60A500243BDE /* CircuitStudioStack+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CircuitStudioStack+Network.swift"; sourceTree = "<group>"; };
 		E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSDraggable.swift; sourceTree = "<group>"; };
 		E9335DA42011214100C9CC9E /* circuit-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "circuit-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DA72011214100C9CC9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +71,6 @@
 		E9335DC62011214100C9CC9E /* circuit-studioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "circuit-studioUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circuit_studioUITests.swift; sourceTree = "<group>"; };
 		E9335DCC2011214100C9CC9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E98953892028DFF3000886F5 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -152,7 +158,10 @@
 		AE6B8BBC2020F8BC00415E0C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E98953892028DFF3000886F5 /* RegisterService.swift */,
+				E913D499202A5F1200243BDE /* CircutStudioAPI.swift */,
+				E913D49B202A5FE300243BDE /* CircuitStudioNeworkService.swift */,
+				E913D49D202A609300243BDE /* CircuitStudioStack.swift */,
+				E913D49F202A60A500243BDE /* CircuitStudioStack+Network.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -532,9 +541,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E989538A2028DFF3000886F5 /* RegisterService.swift in Sources */,
 				E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */,
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
+				E913D49A202A5F1200243BDE /* CircutStudioAPI.swift in Sources */,
+				E913D4A0202A60A500243BDE /* CircuitStudioStack+Network.swift in Sources */,
+				E913D49C202A5FE300243BDE /* CircuitStudioNeworkService.swift in Sources */,
+				E913D49E202A609300243BDE /* CircuitStudioStack.swift in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
 				AE6B8BB52020F4B400415E0C /* GridView.swift in Sources */,
 				E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */,

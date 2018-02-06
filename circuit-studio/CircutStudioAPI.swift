@@ -10,45 +10,56 @@ import Foundation
 import Moya
 
 //TODO: preprocessor for degub build or production to determin baseUrl
-public var apiBaseUrl = "http://staging-api.circuit.studio"
+var apiBaseUrl = "http://staging-api.circuit.studio"
 
-public enum RegisterAPI {
-    case Register(username: String, password: String, email: String)
+enum CSAPIStatusMessages {
+    case Success
+    case Failed(message: String)
+}
+
+struct RegisterUser: Codable {
+    let username: String
+    let email: String
+    let password: String
+}
+
+enum CSAPIEndpoints {
+    case Register(RegisterUser)
 }
 
 //TODO: use moya generated code
-extension RegisterAPI: TargetType {
-    public var baseURL: URL {
+extension CSAPIEndpoints: TargetType {
+    var baseURL: URL {
         return URL(string: apiBaseUrl)!
     }
     
-    public var path: String {
+    var path: String {
         switch self {
         case .Register:
             return "/auth/register"
         }
     }
     
-    public var method: Moya.Method {
+    var method: Moya.Method {
         switch self {
         case .Register:
             return .post
         }
     }
     
-    public var sampleData: Data {
+    var sampleData: Data {
         return "Not implemented".data(using: .utf8)!
     }
     
-    public var task: Task {
+    var task: Task {
         switch self {
-        case .Register(let username, let password, let email):
-             return .requestParameters(parameters: ["username": username, "password": password, "email": email], encoding: JSONEncoding.default)
+        case .Register(let user):
+            return .requestJSONEncodable(user)
         }
     }
     
-    public var headers: [String : String]? {
-        var defaultHeader = [
+    var headers: [String : String]? {
+        let defaultHeader = [
             "Content-Type": "application/json",
             "Accept": "application/json"
         ]
@@ -58,3 +69,4 @@ extension RegisterAPI: TargetType {
         }
     }
 }
+

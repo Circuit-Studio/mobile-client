@@ -12,8 +12,6 @@ import SwiftyJSON
 
 class ViewController: UIViewController, CSDraggableDelegate {
     
-    let apiService = MoyaProvider<RegisterAPI>()
-    
     @IBOutlet var toolbarComponents: [CSDraggable]!
     
     private var gridSize: CGSize {
@@ -58,16 +56,27 @@ class ViewController: UIViewController, CSDraggableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        apiService.request(.Register(username: "ErickES79", password: "mypassword", email: "e@ds.com")) { (result) in
+        let user = RegisterUser(username: "essssss", email: "e@c.com", password: "passssss")
+        CircuitStudioStack.shared.register(a: user) { (result) in
             switch result {
-            case .success(let response):
-                print(JSON(response.data))
-            case .failure(let err):
-                print(err)
+            case .success(let message):
+                print(message)
+                //TODO: login the new user
+            case .failure(let registerError):
+                for aError in registerError.errors {
+                    switch aError {
+                    case .InvalidEmail:
+                        print("invalid email, yo!")
+                    case .InvalidUsername:
+                        print("invalid username, dude! or gal")
+                    case .InvalidPassword:
+                        print("invalid password")
+                    case .UsernameOrEmailAlreadyTaken:
+                        print("username or email already taken, think better!")
+                    }
+                }
             }
         }
-        
     }
-
 }
 
