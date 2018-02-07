@@ -15,6 +15,7 @@
 		E913D49C202A5FE300243BDE /* CircuitStudioNeworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D49B202A5FE300243BDE /* CircuitStudioNeworkService.swift */; };
 		E913D49E202A609300243BDE /* CircuitStudioStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D49D202A609300243BDE /* CircuitStudioStack.swift */; };
 		E913D4A0202A60A500243BDE /* CircuitStudioStack+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D49F202A60A500243BDE /* CircuitStudioStack+Network.swift */; };
+		E913D4A2202A745200243BDE /* Network+RegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D4A1202A745200243BDE /* Network+RegisterTests.swift */; };
 		E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */; };
 		E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA72011214100C9CC9E /* AppDelegate.swift */; };
 		E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA92011214100C9CC9E /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 		E913D49B202A5FE300243BDE /* CircuitStudioNeworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitStudioNeworkService.swift; sourceTree = "<group>"; };
 		E913D49D202A609300243BDE /* CircuitStudioStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitStudioStack.swift; sourceTree = "<group>"; };
 		E913D49F202A60A500243BDE /* CircuitStudioStack+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CircuitStudioStack+Network.swift"; sourceTree = "<group>"; };
+		E913D4A1202A745200243BDE /* Network+RegisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+RegisterTests.swift"; sourceTree = "<group>"; };
 		E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSDraggable.swift; sourceTree = "<group>"; };
 		E9335DA42011214100C9CC9E /* circuit-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "circuit-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DA72011214100C9CC9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				E9335DBF2011214100C9CC9E /* circuit_studioTests.swift */,
+				E913D4A1202A745200243BDE /* Network+RegisterTests.swift */,
 				E9335DC12011214100C9CC9E /* Info.plist */,
 			);
 			path = "circuit-studioTests";
@@ -558,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9335DC02011214100C9CC9E /* circuit_studioTests.swift in Sources */,
+				E913D4A2202A745200243BDE /* Network+RegisterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

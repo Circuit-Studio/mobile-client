@@ -52,14 +52,19 @@ extension CircuitStudioStack {
             switch result {
             case .success(let response):
                 guard
-                    let responseJson = JSON(response.data).dictionary,
-                    let statusMessage = responseJson["message"]?.string
+                    let responseJson = JSON(response.data).dictionary
                     else {
                         return assertionFailure("could not json(response.data)")
                 }
                 
                 switch response.statusCode {
                 case 201: //Created
+                    guard
+                        let statusMessage = responseJson["message"]?.string
+                        else {
+                            return assertionFailure("could not json(response.data)")
+                    }
+                    
                     callback(.success(statusMessage))
                 case 403: //Forbidden - Already taken
                     let err = RegisterUserError(errors: [.UsernameOrEmailAlreadyTaken])

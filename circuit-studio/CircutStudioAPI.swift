@@ -18,9 +18,9 @@ enum CSAPIStatusMessages {
 }
 
 struct RegisterUser: Codable {
-    let username: String
-    let email: String
-    let password: String
+    let username: String // 6 chars or more
+    let email: String // valid email
+    let password: String // 6 chars or more
 }
 
 enum CSAPIEndpoints {
