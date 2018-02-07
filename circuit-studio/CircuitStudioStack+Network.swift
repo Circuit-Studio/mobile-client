@@ -40,11 +40,12 @@ extension CircuitStudioStack {
     }
     
     /**
-     <#Lorem ipsum dolor sit amet.#>
+     Register a user. Use `callback` to check if registering was successful or
+     something went wrong. Then, check `Errors` from the associated type of
+     failure (e.g. invalid username/email/password or already taken username/
+     email).
      
-     - parameter <#bar#>: <#Consectetur adipisicing elit.#>
-     
-     - returns: <#Sed do eiusmod tempor.#>
+     - parameter user: user to register using username, email, and password
      */
     func register(a user: RegisterUser, callback: @escaping (Result<String, RegisterUserError>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result

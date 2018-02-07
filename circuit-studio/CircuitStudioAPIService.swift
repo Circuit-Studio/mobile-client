@@ -15,11 +15,10 @@ struct CircuitStudioNeworkService {
     let apiService = MoyaProvider<CSAPIEndpoints>()
     
     /**
-     <#Lorem ipsum dolor sit amet.#>
+     Fires a moya request using CSAPIEndpoints.Register and returns the result
+     from MoyaProvider.request(..)
      
-     - parameter <#bar#>: <#Consectetur adipisicing elit.#>
-     
-     - returns: <#Sed do eiusmod tempor.#>
+     - parameter user: decoable User containing .username, .email, and .password
      */
     func register(a user: RegisterUser, complition: @escaping (Result<Response, MoyaError>) -> ()) {
         apiService.request(.Register(user)) { (result) in

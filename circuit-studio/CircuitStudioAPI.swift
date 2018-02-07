@@ -9,14 +9,14 @@
 import Foundation
 import Moya
 
-//TODO: preprocessor for degub build or production to determin baseUrl
-var apiBaseUrl = "http://staging-api.circuit.studio"
+#if DEBUG
+    var apiBaseUrl = "http://staging-api.circuit.studio"
+#else
+    var apiBaseUrl = "http://.circuit.studio"
+#endif
+    
 
-enum CSAPIStatusMessages {
-    case Success
-    case Failed(message: String)
-}
-
+//TODO: refactor into codable class for both register and login
 struct RegisterUser: Codable {
     let username: String // 6 chars or more
     let email: String // valid email
@@ -25,9 +25,9 @@ struct RegisterUser: Codable {
 
 enum CSAPIEndpoints {
     case Register(RegisterUser)
+    //TODO: case Login(RegisterUser)
 }
 
-//TODO: use moya generated code
 extension CSAPIEndpoints: TargetType {
     var baseURL: URL {
         return URL(string: apiBaseUrl)!

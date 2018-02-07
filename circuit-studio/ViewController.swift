@@ -29,7 +29,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
     
     func draggable(view: CSDraggable, didEndWith gesture: UIPanGestureRecognizer) {
         if toolbarComponents.contains(view) {
-            //TODO:
+            //TODO: check for valid location when dragging a new component
             let isValidLocation = arc4random() % 2 == 0
             
             if isValidLocation {
@@ -61,7 +61,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
             switch result {
             case .success(let message):
                 print(message)
-                //TODO: login the new user
+                //TODO: auto login the new user after a successful register
             case .failure(let registerError):
                 for aError in registerError.errors {
                     switch aError {
