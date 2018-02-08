@@ -11,32 +11,9 @@ import SwiftyJSON
 import Result
 
 extension CircuitStudioStack {
-    struct RegisterUserError: Error {
-        
-        enum Errors: Error {
-            case InvalidEmail
-            case InvalidUsername
-            case InvalidPassword
-            case UsernameOrEmailAlreadyTaken
-            
-            init?(_ aMessage: String) {
-                switch aMessage {
-                case "Username is too short.":
-                    self = .InvalidUsername
-                case "Password is too short.":
-                    self = .InvalidPassword
-                case "Not a valid email address.":
-                    self = .InvalidEmail
-                default:
-                    return nil
-                }
-            }
-        }
-        var errors: [RegisterUserError.Errors] = []
-        
-        var localizedDescription: String {
-            return String(describing: errors)
-        }
+    
+    struct CSAPIUserError: Error {
+        var errors = [String]()
     }
     
     /**
@@ -47,7 +24,7 @@ extension CircuitStudioStack {
      
      - parameter user: user to register using username, email, and password
      */
-    func register(a user: RegisterUser, callback: @escaping (Result<String, RegisterUserError>) -> ()) {
+    func register(a user: RegisterUser, callback: @escaping (Result<String, CSAPIUserError>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         networkService.register(a: user) { (result) in
             switch result {
@@ -59,6 +36,26 @@ extension CircuitStudioStack {
                 }
                 
                 switch response.statusCode {
+                case 400: //Bad Request (missing fileds, invalid email/username/password
+                    if let errorMessages = responseJson["message"]?.arrayObject as! [String]? {
+                        var err = CSAPIUserError()
+                        for aMessage in errorMessages {
+                            err.errors.append(aMessage)
+                        }
+                        
+                        callback(.failure(err))
+                    } else if let errorMessage = responseJson["message"]?.string {
+                        let err = CSAPIUserError(errors: [errorMessage])
+                        
+                        callback(.failure(err))
+                    } else {
+                        assertionFailure("could not json -> [String] nor json -> String")
+                    }
+                case 403: //Forbidden - Already taken email/username
+                    //FIXME: separate already taken emails and usernames into two different cases once the API returns each case
+                    let err = CSAPIUserError(errors: ["A user already exists with that username or email address."])
+                    
+                    callback(.failure(err))
                 case 201: //Created
                     guard
                         let statusMessage = responseJson["message"]?.string
@@ -67,25 +64,6 @@ extension CircuitStudioStack {
                     }
                     
                     callback(.success(statusMessage))
-                case 403: //Forbidden - Already taken
-                    let err = RegisterUserError(errors: [.UsernameOrEmailAlreadyTaken])
-                    
-                    callback(.failure(err))
-                case 400: //Bad Request
-                    guard let errorMessages = responseJson["message"]?.arrayObject as! [String]? else {
-                        return assertionFailure("could not json -> [String]")
-                    }
-                    
-                    var err = RegisterUserError()
-                    for aMessage in errorMessages {
-                        if let error = RegisterUserError.Errors(aMessage) {
-                            err.errors.append(error)
-                        } else {
-                            assertionFailure("Unhandled error message")
-                        }
-                    }
-                    
-                    callback(.failure(err))
                 default:
                     assertionFailure("Unhandled response code")
                 }

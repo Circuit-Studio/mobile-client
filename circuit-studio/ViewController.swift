@@ -56,7 +56,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let user = RegisterUser(username: "essssss", email: "e@c.com", password: "passssss")
+        let user = RegisterUser(username: "esssssss", email: "e@c.com", password: "passssss")
         
         CircuitStudioStack.shared.register(a: user) { (result) in
             switch result {
@@ -66,16 +66,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
             case .failure(let registerError):
                 //TODO: only print the error message from the server to the front-end
                 for aError in registerError.errors {
-                    switch aError {
-                    case .InvalidEmail:
-                        print("invalid email, yo!")
-                    case .InvalidUsername:
-                        print("invalid username, dude! or gal")
-                    case .InvalidPassword:
-                        print("invalid password")
-                    case .UsernameOrEmailAlreadyTaken:
-                        print("username or email already taken, think better!")
-                    }
+                    print(aError)
                 }
             }
         }
