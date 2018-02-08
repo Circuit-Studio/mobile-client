@@ -12,7 +12,7 @@ import Moya
 #if DEBUG
     var apiBaseUrl = "http://staging-api.circuit.studio"
 #else
-    var apiBaseUrl = "http://.circuit.studio"
+    var apiBaseUrl = "http://circuit.studio"
 #endif
     
 
@@ -25,6 +25,7 @@ struct RegisterUser: Codable {
 
 enum CSAPIEndpoints {
     case Register(RegisterUser)
+    case Login(RegisterUser)
     //TODO: case Login(RegisterUser)
 }
 
@@ -37,6 +38,8 @@ extension CSAPIEndpoints: TargetType {
         switch self {
         case .Register:
             return "/auth/register"
+        case .Login(let userToLogIn):
+            return "/auth/login?usernmae="
         }
     }
     
@@ -44,6 +47,8 @@ extension CSAPIEndpoints: TargetType {
         switch self {
         case .Register:
             return .post
+        case .Login(let _):
+            return .get
         }
     }
     

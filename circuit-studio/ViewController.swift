@@ -57,12 +57,14 @@ class ViewController: UIViewController, CSDraggableDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let user = RegisterUser(username: "essssss", email: "e@c.com", password: "passssss")
+        
         CircuitStudioStack.shared.register(a: user) { (result) in
             switch result {
             case .success(let message):
                 print(message)
                 //TODO: auto login the new user after a successful register
             case .failure(let registerError):
+                //TODO: only print the error message from the server to the front-end
                 for aError in registerError.errors {
                     switch aError {
                     case .InvalidEmail:

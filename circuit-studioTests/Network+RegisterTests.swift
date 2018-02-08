@@ -11,12 +11,6 @@ import XCTest
 
 class NetworkRegiserTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        
-        
-    }
-    
     func test_register_user_invalid_email() {
         let user = RegisterUser(
             username: "unique",
@@ -228,5 +222,6 @@ class NetworkRegiserTests: XCTestCase {
         self.wait(for: [testUsername], timeout: 10)
     }
     
+    //TODO: use Quick and Nimble
 }
 

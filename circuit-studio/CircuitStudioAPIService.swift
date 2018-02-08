@@ -10,6 +10,7 @@ import Foundation
 import Moya
 import Result
 
+//TODO: Define MoyaProvider in a View Model in MVVM vs a struct
 struct CircuitStudioNeworkService {
     
     let apiService = MoyaProvider<CSAPIEndpoints>()
