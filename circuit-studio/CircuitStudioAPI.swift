@@ -17,15 +17,15 @@ import Moya
     
 
 //TODO: refactor into codable class for both register and login
-struct RegisterUser: Codable {
+struct UserHTTPBody: Codable {
     let username: String? // 6 chars or more
     let email: String? // valid email
     let password: String? // 6 chars or more
 }
 
 enum CSAPIEndpoints {
-    case Register(RegisterUser)
-    //TODO: case Login(RegisterUser)
+    case Register(UserHTTPBody)
+    case Login(UserHTTPBody)
 }
 
 extension CSAPIEndpoints: TargetType {
@@ -37,12 +37,14 @@ extension CSAPIEndpoints: TargetType {
         switch self {
         case .Register:
             return "/auth/register"
+        case .Login:
+            return "/auth/login"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .Register:
+        case .Register, .Login:
             return .post
         }
     }
@@ -55,6 +57,8 @@ extension CSAPIEndpoints: TargetType {
         switch self {
         case .Register(let user):
             return .requestJSONEncodable(user)
+        case .Login(let user):
+            return .requestJSONEncodable(user)
         }
     }
     
@@ -64,7 +68,7 @@ extension CSAPIEndpoints: TargetType {
             "Accept": "application/json"
         ]
         switch self {
-        case .Register:
+        case .Register, .Login:
             return defaultHeader
         }
     }

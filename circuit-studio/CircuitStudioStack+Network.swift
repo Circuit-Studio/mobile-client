@@ -24,7 +24,7 @@ extension CircuitStudioStack {
      
      - parameter user: user to register using username, email, and password
      */
-    func register(a user: RegisterUser, callback: @escaping (Result<String, CSAPIUserError>) -> ()) {
+    func register(a user: UserHTTPBody, callback: @escaping (Result<String, CSAPIUserError>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         networkService.register(a: user) { (result) in
             switch result {
@@ -72,4 +72,54 @@ extension CircuitStudioStack {
             }
         }
     }
+
+    typealias SuccessfullLoginData = (token: String, userId: String, username: String)
+    
+    func login(a user: UserHTTPBody, callback: @escaping (Result<SuccessfullLoginData, CSAPIUserError>) -> ()) {
+        networkService.apiService.request(.Login(user)) { (result) in
+            switch result {
+            case .success(let response):
+                guard
+                    let responseJson = JSON(response.data).dictionary
+                    else {
+                        return assertionFailure("could not json(response.data)")
+                }
+                
+                switch response.statusCode {
+                case 200: //success
+//                    status: 'Success',
+//                    message: `${user.username} successfully logged in.`,
+//                    data: {
+//                        token: token,
+//                        username: user.username,
+//                        id: user._id
+//                    }
+                    break
+                case 400: //empty fields
+//                    status: 'Failed',
+//                    message: 'Cannot have empty fields.'
+                    break
+                case 401: //Not found, wrong password
+//                    status: 'Unauthorized',
+//                    message: 'Please check credentials and try again.'
+// or
+//                    status: 'Unauthorized',
+//                    message: 'Please check credentials and try again.'
+                    break
+                case 500: //internal server error
+//                    status: 'Internal Server Error',
+//                    message: 'Please try request again.'
+                    break
+                default:
+                    assertionFailure("unhandled status code")
+                }
+                
+            case .failure(let errorMessage):
+                let err = CSAPIUserError(errors: [errorMessage.localizedDescription])
+                
+                callback(.failure(err))
+            }
+        }
+    }
+
 }

@@ -21,7 +21,7 @@ struct CircuitStudioNeworkService {
      
      - parameter user: decoable User containing .username, .email, and .password
      */
-    func register(a user: RegisterUser, complition: @escaping (Result<Response, MoyaError>) -> ()) {
+    func register(a user: UserHTTPBody, complition: @escaping (Result<Response, MoyaError>) -> ()) {
         apiService.request(.Register(user)) { (result) in
             complition(result)
         }

@@ -56,7 +56,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let user = RegisterUser(username: "esssssss", email: "e@c.com", password: "passssss")
+        let user = UserHTTPBody(username: "esssssss", email: "e@c.com", password: "passssss")
         
         CircuitStudioStack.shared.register(a: user) { (result) in
             switch result {
