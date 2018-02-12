@@ -18,9 +18,9 @@ import Moya
 
 //TODO: refactor into codable class for both register and login
 struct RegisterUser: Codable {
-    let username: String // 6 chars or more
-    let email: String // valid email
-    let password: String // 6 chars or more
+    let username: String? // 6 chars or more
+    let email: String? // valid email
+    let password: String? // 6 chars or more
 }
 
 enum CSAPIEndpoints {

@@ -22,6 +22,8 @@ target 'circuit-studio' do
   target 'circuit-studioTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Quick'
+    pod 'Nimble'
   end
 
   target 'circuit-studioUITests' do
