@@ -24,6 +24,7 @@
 		E9335DB22011214100C9CC9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB12011214100C9CC9E /* Assets.xcassets */; };
 		E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */; };
 		E9335DCB2011214100C9CC9E /* circuit_studioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */; };
+		E9F8371520315C44001540ED /* Network+LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8371420315C44001540ED /* Network+LoginTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E9335DC62011214100C9CC9E /* circuit-studioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "circuit-studioUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circuit_studioUITests.swift; sourceTree = "<group>"; };
 		E9335DCC2011214100C9CC9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9F8371420315C44001540ED /* Network+LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+LoginTests.swift"; sourceTree = "<group>"; };
 		EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				E913D4A1202A745200243BDE /* Network+RegisterTests.swift */,
+				E9F8371420315C44001540ED /* Network+LoginTests.swift */,
 				E9335DC12011214100C9CC9E /* Info.plist */,
 			);
 			path = "circuit-studioTests";
@@ -562,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9F8371520315C44001540ED /* Network+LoginTests.swift in Sources */,
 				E913D4A2202A745200243BDE /* Network+RegisterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

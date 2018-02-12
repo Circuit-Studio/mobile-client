@@ -56,15 +56,21 @@ class ViewController: UIViewController, CSDraggableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let user = UserHTTPBody(username: "esssssss", email: "e@c.com", password: "passssss")
+        let user = UserHTTPBody(username: "erickes77", email: "e@com.com", password: "password")
         
         CircuitStudioStack.shared.register(a: user) { (result) in
             switch result {
             case .success(let message):
                 print(message)
-                //TODO: auto login the new user after a successful register
+                CircuitStudioStack.shared.login(a: user, callback: { (result) in
+                    switch result {
+                    case .success(let successData):
+                        print(successData)
+                    case .failure(let message):
+                        print(message)
+                    }
+                })
             case .failure(let registerError):
-                //TODO: only print the error message from the server to the front-end
                 for aError in registerError.errors {
                     print(aError)
                 }
