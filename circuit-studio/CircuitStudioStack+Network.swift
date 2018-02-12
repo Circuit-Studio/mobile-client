@@ -87,37 +87,29 @@ extension CircuitStudioStack {
                 
                 switch response.statusCode {
                 case 200: //success
-//                    status: 'Success',
-//                    message: `${user.username} successfully logged in.`,
-//                    data: {
-//                        token: token,
-//                        username: user.username,
-//                        id: user._id
-//                    }
-                    break
-                case 400: //empty fields
-//                    status: 'Failed',
-//                    message: 'Cannot have empty fields.'
-                    break
-                case 401: //Not found, wrong password
-//                    status: 'Unauthorized',
-//                    message: 'Please check credentials and try again.'
-// or
-//                    status: 'Unauthorized',
-//                    message: 'Please check credentials and try again.'
-                    break
-                case 500: //internal server error
-//                    status: 'Internal Server Error',
-//                    message: 'Please try request again.'
-                    break
+                    guard
+                        let data = responseJson["data"],
+                        let token = data["token"].string,
+                        let username = data["username"].string,
+                        let id = data["id"].string else {
+                            return assertionFailure("could not parse data")
+                    }
+                    
+                    let result: SuccessfullLoginData = (token, id, username)
+                    
+                    callback(.success(result))
+                case 400, 401, 500: //empty fields, User not found, wrong password, internal server error
+                    guard let message = responseJson["message"]?.string else {
+                        return assertionFailure("count not parse message")
+                    }
+                    
+                    callback(.failure(CSAPIUserError(errors: [message])))
                 default:
                     assertionFailure("unhandled status code")
                 }
                 
             case .failure(let errorMessage):
-                let err = CSAPIUserError(errors: [errorMessage.localizedDescription])
-                
-                callback(.failure(err))
+                callback(.failure(CSAPIUserError(errors: [errorMessage.localizedDescription])))
             }
         }
     }
