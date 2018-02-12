@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Result
+import KeychainSwift
 
 extension CircuitStudioStack {
     
@@ -97,6 +98,8 @@ extension CircuitStudioStack {
                     
                     let result: SuccessfullLoginData = (token, id, username)
                     
+                    self.writeUserToken(loggedInUserData: result)
+                    
                     callback(.success(result))
                 case 400, 401, 500: //empty fields, User not found, wrong password, internal server error
                     guard let message = responseJson["message"]?.string else {
@@ -113,5 +116,17 @@ extension CircuitStudioStack {
             }
         }
     }
+    
+    //TODO: create keychains stack
+    private func writeUserToken(loggedInUserData data: SuccessfullLoginData) {
+        let keychain = KeychainSwift()
+        keychain.set(data.token, forKey: "LOGGED_IN_TOKEN")
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(data.userId, forKey: "LOGGED_IN_USER_ID")
+        userDefaults.synchronize()
+    }
+    
+    //TODO: get LOGGED_IN_TOKEN, LOGGED_IN_USER_ID
 
 }
