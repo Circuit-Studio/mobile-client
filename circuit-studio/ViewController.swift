@@ -12,6 +12,8 @@ import SwiftyJSON
 
 class ViewController: UIViewController, CSDraggableDelegate {
     
+    let viewModel = LoginViewModel()
+    
     @IBOutlet var toolbarComponents: [CSDraggable]!
     
     private var gridSize: CGSize {
@@ -56,7 +58,14 @@ class ViewController: UIViewController, CSDraggableDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        viewModel.registerAndLogin(a: UserHTTPBody(username: "erickes4", email: "e@d.net", password: "longehough")) { (result) in
+            switch result {
+            case .success(let loginData):
+                print(loginData)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
     }
 }
 

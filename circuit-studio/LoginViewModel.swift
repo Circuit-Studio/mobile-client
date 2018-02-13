@@ -70,14 +70,20 @@ struct LoginViewModel {
                     assertionFailure("Unhandled response code")
                 }
             case .failure(let err):
-                assertionFailure("request failed: \(err.localizedDescription)")
+                callback(.failure(CSAPIUserError(errors: [err.localizedDescription])))
             }
         }
     }
     
-    typealias SuccessfullLoginData = (token: String, userId: String, username: String)
+    /** contains the token, username, and userId from a successful login */
+    typealias SuccessfulLoginData = (token: String, userId: String, username: String)
     
-    func login(a user: UserHTTPBody, callback: @escaping (Result<SuccessfullLoginData, CSAPIUserError>) -> ()) {
+    /**
+     Explictly login a user and get back, if successful, a token and user id
+     
+     - parameter user: only needs to contain email and password
+     */
+    func login(a user: UserHTTPBody, callback: @escaping (Result<SuccessfulLoginData, CSAPIUserError>) -> ()) {
         apiService.request(.Login(user)) { (result) in
             switch result {
             case .success(let response):
@@ -97,7 +103,7 @@ struct LoginViewModel {
                             return assertionFailure("could not parse data")
                     }
                     
-                    let result: SuccessfullLoginData = (token, id, username)
+                    let result: SuccessfulLoginData = (token, id, username)
                     
                     PersistenceStack.loggedInUserToken = token
                     PersistenceStack.loggedInUserId = id
@@ -117,5 +123,28 @@ struct LoginViewModel {
                 callback(.failure(CSAPIUserError(errors: [errorMessage.localizedDescription])))
             }
         }
+    }
+
+    /**
+     Use this if you'd like to combine regerstering a user and if successfull,
+     log them in. This implicently calls login(a user, ..) in the success state of
+     register(a user, ..)
+     */
+    func registerAndLogin(a user: UserHTTPBody, callback: @escaping (Result<SuccessfulLoginData, CSAPIUserError>) -> ()) {
+        register(a: user, callback: { result in
+            switch result {
+            case .success:
+                self.login(a: user, callback: { (result) in
+                    switch result {
+                    case .success(let data):
+                        callback(.success(data))
+                    case .failure(let error):
+                        callback(.failure(error))
+                    }
+                })
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        })
     }
 }
