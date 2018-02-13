@@ -1,0 +1,15 @@
+{
+    "login_successful": {
+        "status": "Success",
+        "message": "<username> successfully logged in.",
+        "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTgzNDQyYTBjNjM5MzAwMDRkMWNhM2UiLCJ1c2VybmFtZSI6InVuaXF1ZWVlIiwiaWF0IjoxNTE4NTUyMjU0fQ.MG2LYKjIVYOS5ohREpk5ZCrTn1xh2Whh4vhyiBdZXn4",
+            "username": "<username>",
+            "id": "5a83442a0c63930004d1ca3e"
+        }
+    },
+    "register_successful": {
+        "status": "Success",
+        "message": "<username> was created."
+    }
+}

@@ -8,6 +8,7 @@
 
 import Foundation
 import Moya
+import SwiftyJSON
 
 #if DEBUG
     var apiBaseUrl = "http://staging-api.circuit.studio"
@@ -16,7 +17,6 @@ import Moya
 #endif
     
 
-//TODO: refactor into codable class for both register and login
 struct UserHTTPBody: Codable {
     let username: String? // 6 chars or more
     let email: String? // valid email
@@ -49,8 +49,31 @@ extension CSAPIEndpoints: TargetType {
         }
     }
     
+    private func sampleData(for endpoint: CSAPIEndpoints) -> Data? {
+        let key: String
+        switch endpoint {
+        case .Login:
+            key = "login_successful"
+        case .Register:
+            key = "register_successful"
+        }
+        guard
+            let jsonResponsesUrl = Bundle.main.url(forResource: "JSON Sample Data", withExtension: "json"),
+            let jsonResponsesData = try? Data(contentsOf: jsonResponsesUrl),
+            let jsonResponses = JSON(jsonResponsesData).dictionary,
+            let sampleJson = jsonResponses[key]?.dictionaryObject else {
+                return nil
+        }
+        
+        return try? JSONSerialization.data(withJSONObject: sampleJson, options: .prettyPrinted)
+    }
+    
     var sampleData: Data {
-        return "Not implemented".data(using: .utf8)!
+        guard let data = sampleData(for: self) else {
+            preconditionFailure("sample json response not mapped")
+        }
+        
+        return data
     }
     
     var task: Task {

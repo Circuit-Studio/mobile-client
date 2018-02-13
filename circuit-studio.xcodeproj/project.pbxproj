@@ -13,6 +13,7 @@
 		DA08BDC3229B319081FD27BF /* Pods_circuit_studioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */; };
 		E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D499202A5F1200243BDE /* CircuitStudioAPI.swift */; };
 		E913D4A2202A745200243BDE /* Network+RegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D4A1202A745200243BDE /* Network+RegisterTests.swift */; };
+		E91C6A88203382130031F701 /* JSON Sample Data.json in Resources */ = {isa = PBXBuildFile; fileRef = E91C6A8620337B390031F701 /* JSON Sample Data.json */; };
 		E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */; };
 		E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA72011214100C9CC9E /* AppDelegate.swift */; };
 		E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA92011214100C9CC9E /* ViewController.swift */; };
@@ -54,6 +55,7 @@
 		AE6B8BB42020F4B400415E0C /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		E913D499202A5F1200243BDE /* CircuitStudioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitStudioAPI.swift; sourceTree = "<group>"; };
 		E913D4A1202A745200243BDE /* Network+RegisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+RegisterTests.swift"; sourceTree = "<group>"; };
+		E91C6A8620337B390031F701 /* JSON Sample Data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "JSON Sample Data.json"; sourceTree = "<group>"; };
 		E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSDraggable.swift; sourceTree = "<group>"; };
 		E9335DA42011214100C9CC9E /* circuit-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "circuit-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DA72011214100C9CC9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		AE6B8BB72020F88200415E0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E91C6A8620337B390031F701 /* JSON Sample Data.json */,
 				E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */,
 				E9335DB62011214100C9CC9E /* Info.plist */,
 				E9335DAE2011214100C9CC9E /* circuit_studio.xcdatamodeld */,
@@ -361,6 +364,7 @@
 				E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */,
 				E9335DB22011214100C9CC9E /* Assets.xcassets in Resources */,
 				E9335DAD2011214100C9CC9E /* Main.storyboard in Resources */,
+				E91C6A88203382130031F701 /* JSON Sample Data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,10 +763,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = "circuit-studioTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.circuit-studio.circuit-studioTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG TESTING";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/circuit-studio.app/circuit-studio";

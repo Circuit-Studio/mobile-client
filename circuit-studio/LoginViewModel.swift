@@ -12,7 +12,7 @@ import Result
 import SwiftyJSON
 
 struct LoginViewModel {
-    private let apiService = MoyaProvider<CSAPIEndpoints>()
+    private let apiService = MoyaProvider<CSAPIEndpoints>(stubClosure: MoyaProvider.immediatelyStub)
     
     struct CSAPIUserError: Error {
         var errors = [String]()
