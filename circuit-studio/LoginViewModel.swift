@@ -1,17 +1,18 @@
 //
-//  CircuitStudioStack+Network.swift
+//  LoginViewModel.swift
 //  circuit-studio
 //
-//  Created by Erick Sanchez on 2/6/18.
+//  Created by Erick Sanchez on 2/12/18.
 //  Copyright © 2018 Circuit Studio. All rights reserved.
 //
 
 import Foundation
-import SwiftyJSON
+import Moya
 import Result
-import KeychainSwift
+import SwiftyJSON
 
-extension CircuitStudioStack {
+struct LoginViewModel {
+    private let apiService = MoyaProvider<CSAPIEndpoints>()
     
     struct CSAPIUserError: Error {
         var errors = [String]()
@@ -27,7 +28,7 @@ extension CircuitStudioStack {
      */
     func register(a user: UserHTTPBody, callback: @escaping (Result<String, CSAPIUserError>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
-        networkService.register(a: user) { (result) in
+        apiService.request(.Register(user)) { (result) in
             switch result {
             case .success(let response):
                 guard
@@ -73,11 +74,11 @@ extension CircuitStudioStack {
             }
         }
     }
-
+    
     typealias SuccessfullLoginData = (token: String, userId: String, username: String)
     
     func login(a user: UserHTTPBody, callback: @escaping (Result<SuccessfullLoginData, CSAPIUserError>) -> ()) {
-        networkService.apiService.request(.Login(user)) { (result) in
+        apiService.request(.Login(user)) { (result) in
             switch result {
             case .success(let response):
                 guard
@@ -98,7 +99,8 @@ extension CircuitStudioStack {
                     
                     let result: SuccessfullLoginData = (token, id, username)
                     
-                    self.writeUserToken(loggedInUserData: result)
+                    PersistenceStack.loggedInUserToken = token
+                    PersistenceStack.loggedInUserId = id
                     
                     callback(.success(result))
                 case 400, 401, 500: //empty fields, User not found, wrong password, internal server error
@@ -116,17 +118,4 @@ extension CircuitStudioStack {
             }
         }
     }
-    
-    //TODO: create keychains stack
-    private func writeUserToken(loggedInUserData data: SuccessfullLoginData) {
-        let keychain = KeychainSwift()
-        keychain.set(data.token, forKey: "LOGGED_IN_TOKEN")
-        
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(data.userId, forKey: "LOGGED_IN_USER_ID")
-        userDefaults.synchronize()
-    }
-    
-    //TODO: get LOGGED_IN_TOKEN, LOGGED_IN_USER_ID
-
 }
