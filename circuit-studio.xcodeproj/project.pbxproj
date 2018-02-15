@@ -21,6 +21,8 @@
 		E9335DB22011214100C9CC9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB12011214100C9CC9E /* Assets.xcassets */; };
 		E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */; };
 		E9335DCB2011214100C9CC9E /* circuit_studioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */; };
+		E990F8A2203615FF0022EA37 /* Canvas.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E990F8A1203615FF0022EA37 /* Canvas.storyboard */; };
+		E990F8A4203616350022EA37 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E990F8A3203616350022EA37 /* CanvasViewController.swift */; };
 		E9E583892032A7EF007E4476 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E583882032A7EF007E4476 /* LoginViewModel.swift */; };
 		E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */; };
 		E9F8371520315C44001540ED /* Network+LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8371420315C44001540ED /* Network+LoginTests.swift */; };
@@ -68,6 +70,8 @@
 		E9335DC62011214100C9CC9E /* circuit-studioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "circuit-studioUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circuit_studioUITests.swift; sourceTree = "<group>"; };
 		E9335DCC2011214100C9CC9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E990F8A1203615FF0022EA37 /* Canvas.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Canvas.storyboard; sourceTree = "<group>"; };
+		E990F8A3203616350022EA37 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		E9E583882032A7EF007E4476 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceStack.swift; sourceTree = "<group>"; };
 		E9F8371420315C44001540ED /* Network+LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+LoginTests.swift"; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			children = (
 				E9E583882032A7EF007E4476 /* LoginViewModel.swift */,
 				E9335DA92011214100C9CC9E /* ViewController.swift */,
+				E990F8A3203616350022EA37 /* CanvasViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				E9335DAB2011214100C9CC9E /* Main.storyboard */,
+				E990F8A1203615FF0022EA37 /* Canvas.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E990F8A2203615FF0022EA37 /* Canvas.storyboard in Resources */,
 				E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */,
 				E9335DB22011214100C9CC9E /* Assets.xcassets in Resources */,
 				E9335DAD2011214100C9CC9E /* Main.storyboard in Resources */,
@@ -552,6 +559,7 @@
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
+				E990F8A4203616350022EA37 /* CanvasViewController.swift in Sources */,
 				E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */,
 				AE6B8BB52020F4B400415E0C /* GridView.swift in Sources */,
 				E9E583892032A7EF007E4476 /* LoginViewModel.swift in Sources */,
