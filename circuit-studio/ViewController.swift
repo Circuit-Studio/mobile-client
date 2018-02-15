@@ -10,7 +10,15 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class ViewController: UIViewController, CSDraggableDelegate {
+class ViewController: UIViewController, CSDraggableDelegate, LoginViewControllerDelegate {
+    
+    func loginViewControllerDidLoginSuccessfully(_ viewController: LoginViewController) {
+        if let _ = PersistenceStack.loggedInUserId {
+            print("logged in")
+            self.performSegue(withIdentifier: "show canvas", sender: self)
+        }
+    }
+    
     
     let viewModel = LoginViewModel()
     
@@ -26,6 +34,18 @@ class ViewController: UIViewController, CSDraggableDelegate {
     // MARK: - RETURN VALUES
     
     // MARK: - VOID METHODS
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "show login":
+                let loginVC = segue.destination as! LoginViewController
+                loginVC.delegate = self
+            default:
+                break
+            }
+        }
+    }
     
     // MARK: CSDraggable Delegate
     
