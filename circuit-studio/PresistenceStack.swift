@@ -12,7 +12,7 @@ import KeychainSwift
 struct PersistenceStack {
     
     fileprivate static let LOGGED_IN_TOKEN = "LOGGED_IN_TOKEN"
-    static var loggedInUserToken: String? {
+    static var userToken: String? {
         set {
             let keychain = KeychainSwift()
             if let token = newValue {
@@ -29,7 +29,7 @@ struct PersistenceStack {
     }
     
     fileprivate static let LOGGED_IN_USER_ID = "LOGGED_IN_USER_ID"
-    static var loggedInUserId: String? {
+    static var userId: String? {
         set {
             let userDefaults = UserDefaults.standard
             userDefaults.set(newValue, forKey: LOGGED_IN_USER_ID)
