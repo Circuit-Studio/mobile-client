@@ -34,7 +34,7 @@ struct CSComponent: Codable {
         return CGSize(width: self.width, height: self.height)
     }
     
-    let image: UIImage? = nil
+    var image: UIImage? = nil
     
     let caption: String
     /** each point ranges from 1.0 to 0 representing 100% */
@@ -53,5 +53,22 @@ struct CSComponent: Codable {
         case caption
         case captionX = "caption-x"
         case captionY = "caption-y"
+    }
+    
+    /**
+     <#Lorem ipsum dolor sit amet.#>
+     
+     - parameter image: loaded from UIImage(named: ..)
+     */
+    init(name: String, caption: String, size: CGSize, image: String) {
+        self.id = Int(arc4random() % 100)
+        self.name = name
+        self.width = size.width
+        self.height = size.height
+        self.nodes = []
+        self.caption = caption
+        self.captionX = 0.5
+        self.captionY = 0.5
+        self.image = UIImage(named: image)
     }
 }

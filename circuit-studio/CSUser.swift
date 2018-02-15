@@ -11,4 +11,9 @@ import Foundation
 struct CSUser: Codable {
     let username: String
     let email: String
+    
+    init(username: String, email: String) {
+        self.username = username
+        self.email = email
+    }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class CanvasViewController: UIViewController {
     
+    private var viewModel = CanvasViewModel()
+    
     // MARK: - RETURN VALUES
     
     // MARK: - VOID METHODS
