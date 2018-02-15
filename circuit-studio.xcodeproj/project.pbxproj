@@ -29,6 +29,7 @@
 		E9E583892032A7EF007E4476 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E583882032A7EF007E4476 /* LoginViewModel.swift */; };
 		E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */; };
 		E9F8371520315C44001540ED /* Network+LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8371420315C44001540ED /* Network+LoginTests.swift */; };
+		E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		E9E583882032A7EF007E4476 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceStack.swift; sourceTree = "<group>"; };
 		E9F8371420315C44001540ED /* Network+LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+LoginTests.swift"; sourceTree = "<group>"; };
+		E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsToolbarCollectionViewController.swift; sourceTree = "<group>"; };
 		EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,6 +143,7 @@
 				E9335DA92011214100C9CC9E /* ViewController.swift */,
 				E990F8A7203618E20022EA37 /* CanvasViewModel.swift */,
 				E990F8A3203616350022EA37 /* CanvasViewController.swift */,
+				E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */,
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */,
+				E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
 				E990F8A4203616350022EA37 /* CanvasViewController.swift in Sources */,
 				E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */,
