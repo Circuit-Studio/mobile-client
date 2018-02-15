@@ -105,8 +105,8 @@ struct LoginViewModel {
                     
                     let result: SuccessfulLoginData = (token, id, username)
                     
-                    PersistenceStack.loggedInUserToken = token
-                    PersistenceStack.loggedInUserId = id
+                    PersistenceStack.userToken = token
+                    PersistenceStack.userId = id
                     
                     callback(.success(result))
                 case 400, 401, 500: //empty fields, User not found, wrong password, internal server error
