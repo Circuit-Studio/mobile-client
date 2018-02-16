@@ -47,7 +47,7 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
             newDraggable = CSDraggable(from: cell, mappingToCartesianPlane: self.view)
         case .changed:
             guard let draggable = newDraggable else { return }
-            draggable.snap(to: gesture.location(in: draggable.cartesianPlane), alignedToGrid: true)
+            draggable.snap(to: gesture.location(in: draggable.cartesianPlane), alignedToGrid: false)
         case .ended:
             guard
                 let draggable = newDraggable,
@@ -59,6 +59,7 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
                 newDraggable = nil
             } else {
                 //TODO: validate location of new location
+                draggable.snap()
             }
         default:
             break

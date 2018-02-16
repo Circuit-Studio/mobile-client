@@ -29,7 +29,7 @@ import UIKit
  */
 public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
-    var panGesture: UIPanGestureRecognizer
+    private var panGesture: UIPanGestureRecognizer
     
     /**
      Starting point of the draggable's origin point
@@ -42,14 +42,14 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     /** Assign the cell size of snapping. Defaults to nil, thus drag without
      snapping
      */
-    public lazy var snapGridSize: CGSize? = self.frame.size
+    public var snapGridSize: CGSize? = nil
     
     /**
      While dragging, snap according the to given snapGridSize
      
      - Precondition: snapGridSize must be set
      */
-    public var snapWhileDragging: Bool = true
+    public var snapWhileDragging: Bool = false
     
     @IBOutlet public weak var delegate: CSDraggableDelegate?
     
@@ -78,9 +78,11 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - RETURN VALUES
     
-    public init(delegate: CSDraggableDelegate? = nil) {
+    public init(delegate: CSDraggableDelegate? = nil, gridSize: CGSize? = nil, snapWhileDragging dragging: Bool = false) {
         self.panGesture = UIPanGestureRecognizer()
         self.delegate = delegate
+        self.snapGridSize = gridSize
+        self.snapWhileDragging = dragging
         
         super.init(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         self.panGesture.delegate = self
@@ -119,7 +121,6 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     public required init?(coder aDecoder: NSCoder) {
         //TODO: DRY initizalier
         self.panGesture = UIPanGestureRecognizer()
-        self.delegate = nil
         
         super.init(coder: aDecoder)
         self.panGesture.delegate = self
@@ -272,6 +273,11 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
             }
         }
         animator.startAnimation()
+    }
+    
+    func snap(to cartisianPlane: UIView? = nil) {
+        let point = cartisianPlane?.convert(self.frame.origin, from: self.cartesianPlane) ?? self.frame.origin
+        self.snap(to: point, alignedToGrid: snapGridSize != nil)
     }
     
     // MARK: - IBACTIONS

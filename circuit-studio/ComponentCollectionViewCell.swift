@@ -16,10 +16,9 @@ class ComponentCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: ComponentCollectionViewCellDeletate?
 
-    @IBAction func didLongPress(_ sender: Any) {
+    @objc func didLongPress(_ sender: Any) {
         delegate?.componentCell?(self, didLongPress: sender as! UILongPressGestureRecognizer)
     }
-    @IBOutlet weak var draggable: CSDraggable!
     
     override func awakeFromNib() {
         super.awakeFromNib()
