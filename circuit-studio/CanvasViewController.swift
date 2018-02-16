@@ -44,10 +44,10 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     func componentCell(_ cell: ComponentCollectionViewCell, didLongPress gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
-            newDraggable = CSDraggable(from: cell, mappingToCartesianPlane: self.view)
+            newDraggable = CSDraggable(fromAnother: cell.draggable)
         case .changed:
             guard let draggable = newDraggable else { return }
-            draggable.snap(to: gesture.location(in: draggable.cartesianPlane), alignedToGrid: false)
+            draggable.snap(to: gesture.location(in: draggable.cartesianPlane), alignedToGrid: true)
         case .ended:
             guard
                 let draggable = newDraggable,
@@ -69,7 +69,7 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     // MARK: CSDraggable Delegate
     
     func draggable(view: CSDraggable, didEndWith gesture: UIPanGestureRecognizer) {
-        view.returnToOriginPosition(animated: true)
+        //view.returnToOriginPosition(animated: true)
     }
     
     // MARK: - IBACTIONS

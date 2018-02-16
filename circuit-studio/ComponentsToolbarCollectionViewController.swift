@@ -39,13 +39,11 @@ class ComponentsToolbarCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComponentCollectionViewCell
         
-        //FIXME: differenciate between a scroll and a pick up and drag
-        //maybe by not dragging the actual cell in this collection view but
-        //instead if dragging, vs scrolling, create a copy on the canvas view and
-        //drag that object
-//        cell.draggable.delegate = parentCanvasViewController
-//        cell.draggable.cartesianPlane = parentCanvasViewController.view
-//        cell.draggable.snapGridSize = parentCanvasViewController.gridSize
+        cell.draggable.delegate = parentCanvasViewController
+        cell.draggable.cartesianPlane = parentCanvasViewController.view
+        cell.draggable.snapGridSize = parentCanvasViewController.gridSize
+        cell.draggable.snapWhileDragging = true
+        cell.draggable.isEnabled = false
         cell.delegate = parentCanvasViewController
         
         return cell

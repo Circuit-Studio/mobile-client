@@ -55,6 +55,15 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     @IBOutlet public lazy var cartesianPlane: UIView! = self.superview
     
+    public var isEnabled: Bool {
+        get {
+            return isUserInteractionEnabled
+        }
+        set {
+            isUserInteractionEnabled = newValue
+        }
+    }
+    
     enum CSDraggableErrors: Error {
         case NoSuperview
         
@@ -92,6 +101,25 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     }
     
     /**
+     A complete copy of a draggable including **size**, **frame.origin**,
+     **grid snapping size**, **snap while dragging**, **cartesian plane**, and
+     **starting origin**
+     
+     - warning: the new instance is added to the cartesian plane
+     
+     - parameter draggable: the draggable to copy
+     */
+    public convenience init(fromAnother draggable: CSDraggable) {
+        self.init(from: draggable, mappingToCartesianPlane: draggable.cartesianPlane)
+        
+        self.snapGridSize = draggable.snapGridSize
+        self.snapWhileDragging = draggable.snapWhileDragging
+        self.cartesianPlane = draggable.cartesianPlane
+        self.delegate = draggable.delegate
+        self.startingOrigin = draggable.startingOrigin
+    }
+    
+    /**
      Copies the **size** and **frame.origin** from the *other draggable*. Use
      mappingToCartesianPlane if the otherDraggable.superview is different from
      its cartesianPlate
@@ -102,8 +130,8 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
      
      - parameter toCartesianView: the view to convert the draggable.origin to
      */
-    public convenience init<Draggable>(delegate: CSDraggableDelegate? = nil, from otherDraggable: Draggable, mappingToCartesianPlane toCartesianView: UIView? = nil) where Draggable : UIView {
-        self.init(delegate: delegate)
+    public convenience init<Draggable>(from otherDraggable: Draggable, mappingToCartesianPlane toCartesianView: UIView? = nil) where Draggable : UIView {
+        self.init()
         
         /* copy the size */
         self.frame.size = otherDraggable.frame.size
@@ -192,7 +220,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     }
     
     @objc private func panGesture(gesture: UIPanGestureRecognizer) {
-        guard let mySuperview = cartesianPlane else { return }
+        guard let mySuperview = cartesianPlane, self.isEnabled == true else { return }
         
         let transformation = gesture.translation(in: mySuperview)
         switch gesture.state {
@@ -275,8 +303,8 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
         animator.startAnimation()
     }
     
-    func snap(to cartisianPlane: UIView? = nil) {
-        let point = cartisianPlane?.convert(self.frame.origin, from: self.cartesianPlane) ?? self.frame.origin
+    func snap(to cartesianPlane: UIView? = nil) {
+        let point = cartesianPlane?.convert(self.frame.origin, from: self.cartesianPlane) ?? self.frame.origin
         self.snap(to: point, alignedToGrid: snapGridSize != nil)
     }
     

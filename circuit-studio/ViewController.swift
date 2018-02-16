@@ -35,7 +35,7 @@ class ViewController: UIViewController, CSDraggableDelegate {
             let isValidLocation = arc4random() % 2 == 0
             
             if isValidLocation {
-                let _ = CSDraggable(delegate: self, from: view, mappingToCartesianPlane: self.view)
+                let _ = CSDraggable(from: view, mappingToCartesianPlane: self.view)
                 
                 /* animate the toolbar component back to origianl spot */
                 view.returnToOriginPosition(animated: true, animation: { (originPoint) in
