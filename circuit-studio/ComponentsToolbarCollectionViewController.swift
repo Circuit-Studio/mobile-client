@@ -8,56 +8,60 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ComponentsToolbarCollectionViewController: UICollectionViewController {
+    
+    var components: [CSComponent] = [
+        CSComponent(name: "Resistor", caption: "5 Umms", size: CGSize(width: 1, height: 1), image: "resistor"),
+        CSComponent(name: "5v Battery", caption: "5v", size: CGSize(width: 1, height: 2), image: "battery"),
+        CSComponent(name: "3v Battery", caption: "3v", size: CGSize(width: 1, height: 2), image: "battery"),
+        CSComponent(name: "1v Battery", caption: "1v", size: CGSize(width: 1, height: 2), image: "battery")
+    ] //FIXME: mock data
+    
+    weak var parentCanvasViewController: CanvasViewController!
+    
+    var nColumns: Int = 2
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: UICollectionViewDataSource
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        return components.count * 5 //FIXME: mock data
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComponentCollectionViewCell
+        
+        //FIXME: differenciate between a scroll and a pick up and drag
+        //maybe by not dragging the actual cell in this collection view but
+        //instead if dragging, vs scrolling, create a copy on the canvas view and
+        //drag that object
+//        cell.draggable.delegate = parentCanvasViewController
+//        cell.draggable.cartesianPlane = parentCanvasViewController.view
+//        cell.draggable.snapGridSize = parentCanvasViewController.gridSize
+        cell.delegate = parentCanvasViewController
+        
+        return cell
+    }
+    
+    // MARK: - VOID METHODS
+    
+    // MARK: - IBACTIONS
+    
+    // MARK: - LIFE CYCLE
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
-        return cell
+        
+        let cellNib = UINib(nibName: "ComponentCollectionViewCell", bundle: Bundle.main)
+        self.collectionView!.register(cellNib, forCellWithReuseIdentifier: "cell")
     }
 
     // MARK: UICollectionViewDelegate

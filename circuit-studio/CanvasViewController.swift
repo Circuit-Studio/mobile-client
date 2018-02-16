@@ -8,13 +8,15 @@
 
 import UIKit
 
-class CanvasViewController: UIViewController {
+class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentCollectionViewCellDeletate {
     
     @IBOutlet weak var labelDocTitle: UILabel!
     @IBOutlet weak var containerComponentToolbar: UIView!
-    private var componentToolbarCollectionViewController: ComponentsToolbarCollectionViewController!
+    private weak var componentToolbarCollectionViewController: ComponentsToolbarCollectionViewController!
     
     private var viewModel = CanvasViewModel()
+    
+    var gridSize = CGSize(width: 64, height: 64)
     
     // MARK: - RETURN VALUES
     
@@ -29,9 +31,44 @@ class CanvasViewController: UIViewController {
                 }
                 
                 componentToolbarCollectionViewController = collectionViewController
+                collectionViewController.parentCanvasViewController = self
             default: break
             }
         }
+    }
+    
+    /**
+     When a new component is dragged from the toolbar to the canvas
+     */
+    private var newDraggable: CSDraggable?
+    func componentCell(_ cell: ComponentCollectionViewCell, didLongPress gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            newDraggable = CSDraggable(from: cell, mappingToCartesianPlane: self.view)
+        case .changed:
+            guard let draggable = newDraggable else { return }
+            draggable.snap(to: gesture.location(in: draggable.cartesianPlane), alignedToGrid: true)
+        case .ended:
+            guard
+                let draggable = newDraggable,
+                let originalOrigin = draggable.startingOrigin
+                else { return }
+            
+            if originalOrigin == draggable.frame.origin {
+                draggable.removeFromSuperview()
+                newDraggable = nil
+            } else {
+                //TODO: validate location of new location
+            }
+        default:
+            break
+        }
+    }
+    
+    // MARK: CSDraggable Delegate
+    
+    func draggable(view: CSDraggable, didEndWith gesture: UIPanGestureRecognizer) {
+        view.returnToOriginPosition(animated: true)
     }
     
     // MARK: - IBACTIONS

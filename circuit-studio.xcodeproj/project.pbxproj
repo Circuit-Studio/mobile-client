@@ -30,6 +30,8 @@
 		E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */; };
 		E9F8371520315C44001540ED /* Network+LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8371420315C44001540ED /* Network+LoginTests.swift */; };
 		E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */; };
+		E9FF530220364177000ADB30 /* ComponentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */; };
+		E9FF530320364177000ADB30 /* ComponentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF530120364177000ADB30 /* ComponentCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceStack.swift; sourceTree = "<group>"; };
 		E9F8371420315C44001540ED /* Network+LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+LoginTests.swift"; sourceTree = "<group>"; };
 		E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsToolbarCollectionViewController.swift; sourceTree = "<group>"; };
+		E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9FF530120364177000ADB30 /* ComponentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComponentCollectionViewCell.xib; sourceTree = "<group>"; };
 		EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,9 +145,7 @@
 			children = (
 				E9E583882032A7EF007E4476 /* LoginViewModel.swift */,
 				E9335DA92011214100C9CC9E /* ViewController.swift */,
-				E990F8A7203618E20022EA37 /* CanvasViewModel.swift */,
-				E990F8A3203616350022EA37 /* CanvasViewController.swift */,
-				E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */,
+				E9FF52FF20364094000ADB30 /* Canvas View */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -245,6 +247,18 @@
 				E9335DCC2011214100C9CC9E /* Info.plist */,
 			);
 			path = "circuit-studioUITests";
+			sourceTree = "<group>";
+		};
+		E9FF52FF20364094000ADB30 /* Canvas View */ = {
+			isa = PBXGroup;
+			children = (
+				E990F8A7203618E20022EA37 /* CanvasViewModel.swift */,
+				E990F8A3203616350022EA37 /* CanvasViewController.swift */,
+				E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */,
+				E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */,
+				E9FF530120364177000ADB30 /* ComponentCollectionViewCell.xib */,
+			);
+			name = "Canvas View";
 			sourceTree = "<group>";
 		};
 		F176088A2CA1EDB77EE5407A /* Pods */ = {
@@ -377,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E990F8A2203615FF0022EA37 /* Canvas.storyboard in Resources */,
+				E9FF530320364177000ADB30 /* ComponentCollectionViewCell.xib in Resources */,
 				E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */,
 				E9335DB22011214100C9CC9E /* Assets.xcassets in Resources */,
 				E9335DAD2011214100C9CC9E /* Main.storyboard in Resources */,
@@ -579,6 +594,7 @@
 				E990F8A8203618E20022EA37 /* CanvasViewModel.swift in Sources */,
 				E990F89E20360C890022EA37 /* CSComponent.swift in Sources */,
 				E990F8A020360FEC0022EA37 /* CSUser.swift in Sources */,
+				E9FF530220364177000ADB30 /* ComponentCollectionViewCell.swift in Sources */,
 				E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

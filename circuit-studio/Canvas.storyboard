@@ -15,7 +15,7 @@
         <scene sceneID="qEE-bk-Qpg">
             <objects>
                 <viewController id="keX-Fk-pMI" customClass="CanvasViewController" customModule="circuit_studio" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="X5Z-in-axD">
+                    <view key="view" contentMode="scaleToFill" id="X5Z-in-axD" customClass="GridView" customModule="circuit_studio" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -120,7 +120,7 @@
                                     <constraint firstAttribute="bottom" secondItem="La4-O2-WoT" secondAttribute="bottom" constant="8" id="m1c-fG-BZy"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TDQ-Rt-u6q">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TDQ-Rt-u6q">
                                 <rect key="frame" x="0.0" y="68" width="132" height="700"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GBh-F9-3ZR">
@@ -138,8 +138,8 @@
                                             <action selector="segComponentsTabDidChange:" destination="keX-Fk-pMI" eventType="valueChanged" id="L0h-RC-3Rx"/>
                                         </connections>
                                     </segmentedControl>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-XO-VxJ">
-                                        <rect key="frame" x="0.0" y="40" width="21" height="660"/>
+                                    <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-XO-VxJ">
+                                        <rect key="frame" x="0.0" y="40" width="132" height="660"/>
                                         <connections>
                                             <segue destination="DSi-d1-mNy" kind="embed" identifier="embeded collection controller" id="uxZ-iy-fbX"/>
                                         </connections>
@@ -149,6 +149,21 @@
                                     <constraint firstAttribute="width" constant="132" id="sHT-R9-ePr"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Py2-YO-y7i" customClass="CSDraggable" customModule="circuit_studio" customModuleProvider="target">
+                                <rect key="frame" x="559" y="238" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WS5-Vc-oRt" customClass="CSDraggable" customModule="circuit_studio" customModuleProvider="target">
+                                <rect key="frame" x="569" y="248" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNN-zC-3Lm" customClass="CSDraggable" customModule="circuit_studio" customModuleProvider="target">
+                                <rect key="frame" x="480" y="466" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -164,6 +179,14 @@
                             <constraint firstItem="gM4-pa-Eb4" firstAttribute="leading" secondItem="PX4-ej-Ti6" secondAttribute="leading" id="uK6-K2-irz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PX4-ej-Ti6"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="minorGridSize">
+                                <integer key="value" value="64"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="majorGridMultiplier">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="buttonProfile" destination="bN2-YJ-UXm" id="Ei1-60-5OY"/>
@@ -181,25 +204,16 @@
             <objects>
                 <collectionViewController id="DSi-d1-mNy" customClass="ComponentsToolbarCollectionViewController" customModule="circuit_studio" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fi2-Lx-N3O">
-                        <rect key="frame" x="0.0" y="0.0" width="21" height="660"/>
+                        <rect key="frame" x="0.0" y="0.0" width="132" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wiW-Qr-h2o">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="64" height="64"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="R4s-ry-mJM">
-                                <rect key="frame" x="-14.5" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                         <connections>
                             <outlet property="dataSource" destination="DSi-d1-mNy" id="1Lc-TM-LiS"/>
                             <outlet property="delegate" destination="DSi-d1-mNy" id="oTK-U0-Lp3"/>
