@@ -44,7 +44,7 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     func componentCell(_ cell: ComponentCollectionViewCell, didLongPress gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
-            newDraggable = UIComponent(fromAnother: cell.draggable)
+            newDraggable = UIComponent(from: cell.component)
         case .changed:
             guard let draggable = newDraggable else { return }
             draggable.snap(to: gesture.location(in: draggable.cartesianPlane), alignedToGrid: true)

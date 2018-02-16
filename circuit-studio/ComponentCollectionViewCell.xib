@@ -33,7 +33,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
-                <outlet property="draggable" destination="cWu-sd-SZN" id="esn-Qc-Zag"/>
+                <outlet property="component" destination="cWu-sd-SZN" id="esn-Qc-Zag"/>
             </connections>
         </collectionViewCell>
     </objects>

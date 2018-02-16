@@ -10,50 +10,39 @@ import UIKit
 
 public class UIComponent: CSDraggable {
     
-    public var image = UIImage(named: "no-component")!
-    
-    init() {
-        super.init()
+    init(size: CGSize) {
+        super.init(size: size)
+        self.image = UIImage(named: "no-component")!
+        self.viewDidLoad()
+        
     }
     
-    public override init(delegate: CSDraggableDelegate?, gridSize: CGSize?, snapWhileDragging dragging: Bool) {
-        super.init(delegate: delegate, gridSize: gridSize, snapWhileDragging: dragging)
+    override public init(size: CGSize, gridSize: CGSize?, snapWhileDragging dragging: Bool, delegate: CSDraggableDelegate?) {
+        super.init(size: size, gridSize: gridSize, snapWhileDragging: dragging, delegate: delegate)
+        self.image = UIImage(named: "no-component")!
+    }
+    
+    override public init<Component>(from anotherDraggable: Component) where Component : UIComponent {
+        super.init(from: anotherDraggable)
+        self.image = anotherDraggable.image
+        self.viewDidLoad()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.image = UIImage(named: "no-component")!
+        self.viewDidLoad()
     }
     
-    //TODO: clean up init
-    public convenience init(fromAnother draggable: UIComponent) {
-        self.init()
-        
-        self.snapGridSize = draggable.snapGridSize
-        self.snapWhileDragging = draggable.snapWhileDragging
-        self.cartesianPlane = draggable.cartesianPlane
-        self.delegate = draggable.delegate
-//        self.startingOrigin = draggable.startingOrigin
-        
-        self.image = draggable.image
-        
-        /* copy the size */
-        self.frame.size = draggable.frame.size
-        
-        /* copy the origin */
-        self.cartesianPlane.addSubview(self)
-        self.frame.origin = self.cartesianPlane.convert(draggable.frame.origin, from: draggable.superview)
-        //        self.startingOrigin = self.frame.origin
-    }
-    
-    init?(from component: CSComponent) {
+    //TODO: display the data such as name, caption, nodes, size according to the grid size
+    convenience init?(from component: CSComponent) {
         guard
             let image = component.image
             else {
                 return nil
         }
         
-        super.init()
-        
+        self.init(size: component.size)
         self.image = image
     }
     
@@ -68,7 +57,7 @@ public class UIComponent: CSDraggable {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundColor = UIColor(patternImage: image)
+        contentMode = .scaleAspectFit
+        isUserInteractionEnabled = true
     }
-
 }

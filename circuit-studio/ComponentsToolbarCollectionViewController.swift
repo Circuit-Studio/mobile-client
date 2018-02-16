@@ -12,9 +12,10 @@ class ComponentsToolbarCollectionViewController: UICollectionViewController {
     
     var components: [CSComponent] = [
         CSComponent(name: "Resistor", caption: "5 Umms", size: CGSize(width: 1, height: 1), image: "resistor"),
-        CSComponent(name: "5v Battery", caption: "5v", size: CGSize(width: 1, height: 2), image: "battery"),
-        CSComponent(name: "3v Battery", caption: "3v", size: CGSize(width: 1, height: 2), image: "battery"),
-        CSComponent(name: "1v Battery", caption: "1v", size: CGSize(width: 1, height: 2), image: "battery")
+        CSComponent(name: "Capacitor", caption: "5v", size: CGSize(width: 1, height: 2), image: "capacitor"),
+        CSComponent(name: "Diode", caption: "3v", size: CGSize(width: 1, height: 2), image: "diode"),
+        CSComponent(name: "Switch", caption: "1v", size: CGSize(width: 1, height: 2), image: "switch"),
+        CSComponent(name: "Transistor", caption: "1v", size: CGSize(width: 1, height: 2), image: "transistor")
     ] //FIXME: mock data
     
     weak var parentCanvasViewController: CanvasViewController!
@@ -39,11 +40,13 @@ class ComponentsToolbarCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComponentCollectionViewCell
         
-        cell.draggable.delegate = parentCanvasViewController
-        cell.draggable.cartesianPlane = parentCanvasViewController.view
-        cell.draggable.snapGridSize = parentCanvasViewController.gridSize
-        cell.draggable.snapWhileDragging = true
-        cell.draggable.isEnabled = false
+        let component = components[indexPath.row % 5]
+        cell.component.image = component.image
+        cell.component.delegate = parentCanvasViewController
+        cell.component.cartesianPlane = parentCanvasViewController.view
+        cell.component.snapGridSize = parentCanvasViewController.gridSize
+        cell.component.snapWhileDragging = true
+        cell.component.isEnabled = false
         cell.delegate = parentCanvasViewController
         
         return cell

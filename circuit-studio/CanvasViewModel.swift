@@ -14,4 +14,5 @@ struct CanvasViewModel {
     var documentTitle: String = "Untitled" //FIXME: mock data
     
     var loggedInUser: CSUser = CSUser(username: "JohnnyApps", email: "e@d.com") //FIXME: mock data
+    
 }

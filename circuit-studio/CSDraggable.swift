@@ -27,7 +27,7 @@ import UIKit
  
  - warning: CSDraggable must contain a self.superview
  */
-public class CSDraggable: UIView, UIGestureRecognizerDelegate {
+public class CSDraggable: UIImageView, UIGestureRecognizerDelegate {
     
     private var panGesture: UIPanGestureRecognizer
     
@@ -42,14 +42,14 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     /** Assign the cell size of snapping. Defaults to nil, thus drag without
      snapping
      */
-    public var snapGridSize: CGSize? = nil
+    public var snapGridSize: CGSize?
     
     /**
      While dragging, snap according the to given snapGridSize
      
      - Precondition: snapGridSize must be set
      */
-    public var snapWhileDragging: Bool = false
+    public var snapWhileDragging: Bool
     
     @IBOutlet public weak var delegate: CSDraggableDelegate?
     
@@ -87,74 +87,55 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - RETURN VALUES
     
-    public init(delegate: CSDraggableDelegate? = nil, gridSize: CGSize? = nil, snapWhileDragging dragging: Bool = false) {
+    public init(size: CGSize, gridSize: CGSize? = nil, snapWhileDragging dragging: Bool = false, delegate: CSDraggableDelegate? = nil) {
         self.panGesture = UIPanGestureRecognizer()
         self.delegate = delegate
         self.snapGridSize = gridSize
         self.snapWhileDragging = dragging
-        
-        super.init(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
-        self.panGesture.delegate = self
-        self.panGesture.addTarget(self, action: #selector(CSDraggable.panGesture(gesture:)))
-        self.addGestureRecognizer(panGesture)
+        super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        self.viewWillLoad()
         self.viewDidLoad()
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        //TODO: DRY initizalier
         self.panGesture = UIPanGestureRecognizer()
-        
+        self.delegate = nil
+        self.snapGridSize = nil
+        self.snapWhileDragging = false
         super.init(coder: aDecoder)
-        self.panGesture.delegate = self
-        self.panGesture.addTarget(self, action: #selector(CSDraggable.panGesture(gesture:)))
-        self.addGestureRecognizer(panGesture)
+        self.viewWillLoad()
         self.viewDidLoad()
     }
     
-    /**
-     A complete copy of a draggable including **size**, **frame.origin**,
-     **grid snapping size**, **snap while dragging**, **cartesian plane**, and
-     **starting origin**
-     
-     - warning: the new instance is added to the cartesian plane
-     
-     - parameter draggable: the draggable to copy
-     */
-    public convenience init(fromAnother draggable: CSDraggable) {
-        self.init(from: draggable, mappingToCartesianPlane: draggable.cartesianPlane)
+    public init<Draggable>(from anotherDraggable: Draggable) where Draggable : CSDraggable {
+        self.panGesture = UIPanGestureRecognizer()
+        self.delegate = anotherDraggable.delegate
+        self.snapGridSize = anotherDraggable.snapGridSize
+        self.snapWhileDragging = anotherDraggable.snapWhileDragging
+
+        self.snapGridSize = anotherDraggable.snapGridSize
+        self.snapWhileDragging = anotherDraggable.snapWhileDragging
+        self.delegate = anotherDraggable.delegate
+        self.startingOrigin = anotherDraggable.startingOrigin
         
-        self.snapGridSize = draggable.snapGridSize
-        self.snapWhileDragging = draggable.snapWhileDragging
-        self.cartesianPlane = draggable.cartesianPlane
-        self.delegate = draggable.delegate
-        self.startingOrigin = draggable.startingOrigin
-    }
-    
-    /**
-     Copies the **size** and **frame.origin** from the *other draggable*. Use
-     mappingToCartesianPlane if the otherDraggable.superview is different from
-     its cartesianPlate
-     
-     - warning: the new instance is added to the cartesian plane, if given
-     
-     - parameter otherDraggable: the draggable to copy
-     
-     - parameter toCartesianView: the view to convert the draggable.origin to
-     */
-    public convenience init<Draggable>(from otherDraggable: Draggable, mappingToCartesianPlane toCartesianView: UIView? = nil) where Draggable : UIView {
-        self.init()
-        
-        /* copy the size */
-        self.frame.size = otherDraggable.frame.size
-        
-        /* copy the origin */
-        toCartesianView?.addSubview(self)
-        if let mappedOrigin = toCartesianView?.convert(otherDraggable.frame.origin, from: otherDraggable.superview) {
-            self.frame.origin = mappedOrigin
+        super.init(frame: anotherDraggable.frame)
+        self.viewWillLoad()
+
+        self.cartesianPlane = anotherDraggable.cartesianPlane
+        self.cartesianPlane.addSubview(self)
+        if anotherDraggable.cartesianPlane != anotherDraggable.superview {
+            self.frame.origin = self.cartesianPlane.convert(anotherDraggable.frame.origin, from: anotherDraggable.superview)
         } else {
-            self.frame.origin = otherDraggable.frame.origin
+            self.frame.origin = anotherDraggable.frame.origin
         }
         self.startingOrigin = self.frame.origin
+        self.viewDidLoad()
+    }
+    
+    private func viewWillLoad() {
+        self.panGesture.delegate = self
+        self.panGesture.addTarget(self, action: #selector(CSDraggable.panGesture(gesture:)))
+        self.addGestureRecognizer(panGesture)
     }
     
     public func viewDidLoad() { }
