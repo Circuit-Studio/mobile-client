@@ -31,7 +31,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Try us out!"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="show canvas" id="okL-Qb-cs1"/>
+                                    <segue destination="hYV-py-DIC" kind="showDetail" identifier="show canvas" action="showViewController:sender:" id="F7h-PA-Qr1"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="circuit.studio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wa9-6N-QcZ">
@@ -50,6 +50,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mvQ-Qa-uB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-865.4296875" y="132.8125"/>
+        </scene>
+        <!--Canvas-->
+        <scene sceneID="cAZ-TM-OsX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Canvas" id="hYV-py-DIC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kl0-LU-4n7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-455" y="133"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="va4-Tc-vlh">
@@ -173,90 +181,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dJU-q9-bTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-865" y="891"/>
-        </scene>
-        <!--Delegate-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="circuit_studio" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GridView" customModule="circuit_studio" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="5Kg-EB-czD">
-                                <rect key="frame" x="0.0" y="52" width="64" height="192"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQW-2f-FD3" customClass="CSDraggable" customModule="circuit_studio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="2Mm-aU-rGt"/>
-                                            <constraint firstAttribute="width" constant="64" id="kE7-NK-yGL"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="cartesianPlane" destination="8bC-Xf-vdC" id="ryg-I9-dNg"/>
-                                            <outlet property="delegate" destination="BYZ-38-t0r" id="wGo-33-Jg6"/>
-                                        </connections>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ura-8w-Mhe" customClass="CSDraggable" customModule="circuit_studio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="64" height="64"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="dg0-nQ-Bw5"/>
-                                            <constraint firstAttribute="height" constant="64" id="za2-sQ-FP5"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="cartesianPlane" destination="8bC-Xf-vdC" id="cQx-LC-ZFc"/>
-                                            <outlet property="delegate" destination="BYZ-38-t0r" id="ahd-rN-YKe"/>
-                                        </connections>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="914-UW-y4E" customClass="CSDraggable" customModule="circuit_studio" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128" width="64" height="64"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="64" id="RJn-h1-1oA"/>
-                                            <constraint firstAttribute="height" constant="64" id="TQn-55-skN"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="cartesianPlane" destination="8bC-Xf-vdC" id="BTi-Ky-KBE"/>
-                                            <outlet property="delegate" destination="BYZ-38-t0r" id="1nI-gm-Tit"/>
-                                        </connections>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5t-qQ-s2i">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
-                                <items>
-                                    <navigationItem title="Code.circuts" largeTitleDisplayMode="never" id="XEH-Ji-1dU"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="X5t-qQ-s2i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Jf3-YN-cis"/>
-                            <constraint firstItem="5Kg-EB-czD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NCM-4t-JC6"/>
-                            <constraint firstItem="X5t-qQ-s2i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iSc-Aj-C77"/>
-                            <constraint firstItem="X5t-qQ-s2i" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jQt-y8-uPd"/>
-                            <constraint firstItem="5Kg-EB-czD" firstAttribute="top" secondItem="X5t-qQ-s2i" secondAttribute="bottom" constant="8" id="rhr-4H-gXL"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="minorGridSize">
-                                <integer key="value" value="64"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="majorGridMultiplier">
-                                <integer key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <connections>
-                        <outletCollection property="toolbarComponents" destination="dQW-2f-FD3" collectionClass="NSMutableArray" id="UWB-2m-7ch"/>
-                        <outletCollection property="toolbarComponents" destination="ura-8w-Mhe" collectionClass="NSMutableArray" id="HZw-JX-FlD"/>
-                        <outletCollection property="toolbarComponents" destination="914-UW-y4E" collectionClass="NSMutableArray" id="p3g-69-mvn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-176" y="133"/>
         </scene>
     </scenes>
 </document>

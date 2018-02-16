@@ -13,7 +13,7 @@ import SwiftyJSON
 class ViewController: UIViewController, CSDraggableDelegate, LoginViewControllerDelegate {
     
     func loginViewControllerDidLoginSuccessfully(_ viewController: LoginViewController) {
-        if let _ = PersistenceStack.loggedInUserId {
+        if let _ = PersistenceStack.userId {
             print("logged in")
             self.performSegue(withIdentifier: "show canvas", sender: self)
         }
@@ -48,28 +48,6 @@ class ViewController: UIViewController, CSDraggableDelegate, LoginViewController
     }
     
     // MARK: CSDraggable Delegate
-    
-    func draggable(view: CSDraggable, didEndWith gesture: UIPanGestureRecognizer) {
-        if toolbarComponents.contains(view) {
-            //TODO: check for valid location when dragging a new component
-            let isValidLocation = arc4random() % 2 == 0
-            
-            if isValidLocation {
-                let _ = CSDraggable(delegate: self, from: view, mappingToCartesianPlane: self.view)
-                
-                /* animate the toolbar component back to origianl spot */
-                view.returnToOriginPosition(animated: true, animation: { (originPoint) in
-                    view.alpha = 0.0
-                    view.frame.origin = originPoint
-                    UIView.animate(withDuration: 0.5, animations: {
-                        view.alpha = 1.0
-                    })
-                })
-            } else {
-                view.returnToOriginPosition(animated: true)
-            }
-        }
-    }
     
     // MARK: - IBACTIONS
     
