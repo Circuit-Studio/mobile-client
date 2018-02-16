@@ -11,7 +11,7 @@
 		7BF936EE8644E5953E213943 /* Pods_circuit_studio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */; };
 		AE6B8BB52020F4B400415E0C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6B8BB42020F4B400415E0C /* GridView.swift */; };
 		AEFF9479203619D6000C353F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFF9478203619D6000C353F /* LoginViewController.swift */; };
-		AEFF947B20362252000C353F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFF947A20362252000C353F /* UIViewController+Alert.swift */; };
+		AEFF947D20375629000C353F /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFF947C20375629000C353F /* AlertHelper.swift */; };
 		DA08BDC3229B319081FD27BF /* Pods_circuit_studioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */; };
 		E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D499202A5F1200243BDE /* CircuitStudioAPI.swift */; };
 		E913D4A2202A745200243BDE /* Network+RegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D4A1202A745200243BDE /* Network+RegisterTests.swift */; };
@@ -55,7 +55,7 @@
 		A66CA76F94C6C6D4DD19E3B2 /* Pods-circuit-studioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-circuit-studioTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-circuit-studioTests/Pods-circuit-studioTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE6B8BB42020F4B400415E0C /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		AEFF9478203619D6000C353F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		AEFF947A20362252000C353F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "../../../../../Documents/Code Stuff/Reddit Viewer/Reddit Viewer/Extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		AEFF947C20375629000C353F /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		E913D499202A5F1200243BDE /* CircuitStudioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircuitStudioAPI.swift; sourceTree = "<group>"; };
 		E913D4A1202A745200243BDE /* Network+RegisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+RegisterTests.swift"; sourceTree = "<group>"; };
 		E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSDraggable.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				E913D499202A5F1200243BDE /* CircuitStudioAPI.swift */,
-				AEFF947A20362252000C353F /* UIViewController+Alert.swift */,
+				AEFF947C20375629000C353F /* AlertHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -559,10 +559,10 @@
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
-				AEFF947B20362252000C353F /* UIViewController+Alert.swift in Sources */,
 				E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */,
 				AE6B8BB52020F4B400415E0C /* GridView.swift in Sources */,
 				E9E583892032A7EF007E4476 /* LoginViewModel.swift in Sources */,
+				AEFF947D20375629000C353F /* AlertHelper.swift in Sources */,
 				E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
