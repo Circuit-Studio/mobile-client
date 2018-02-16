@@ -32,6 +32,7 @@
 		E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */; };
 		E9FF530220364177000ADB30 /* ComponentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */; };
 		E9FF530320364177000ADB30 /* ComponentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF530120364177000ADB30 /* ComponentCollectionViewCell.xib */; };
+		E9FF53052036A145000ADB30 /* UIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF53042036A145000ADB30 /* UIComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsToolbarCollectionViewController.swift; sourceTree = "<group>"; };
 		E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9FF530120364177000ADB30 /* ComponentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComponentCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9FF53042036A145000ADB30 /* UIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponent.swift; sourceTree = "<group>"; };
 		EAD4BA2C671AED845883D826 /* Pods_circuit_studioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDBBE324D6280E4B9FA2AB9C /* Pods_circuit_studio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_circuit_studio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 			children = (
 				AE6B8BB42020F4B400415E0C /* GridView.swift */,
 				E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */,
+				E9FF53042036A145000ADB30 /* UIComponent.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */,
 				E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */,
+				E9FF53052036A145000ADB30 /* UIComponent.swift in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
 				E990F8A4203616350022EA37 /* CanvasViewController.swift in Sources */,
 				E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */,

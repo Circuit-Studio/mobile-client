@@ -40,11 +40,11 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     /**
      When a new component is dragged from the toolbar to the canvas
      */
-    private var newDraggable: CSDraggable?
+    private var newDraggable: UIComponent?
     func componentCell(_ cell: ComponentCollectionViewCell, didLongPress gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
-            newDraggable = CSDraggable(fromAnother: cell.draggable)
+            newDraggable = UIComponent(fromAnother: cell.draggable)
         case .changed:
             guard let draggable = newDraggable else { return }
             draggable.snap(to: gesture.location(in: draggable.cartesianPlane), alignedToGrid: true)

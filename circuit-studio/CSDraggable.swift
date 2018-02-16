@@ -97,7 +97,18 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
         self.panGesture.delegate = self
         self.panGesture.addTarget(self, action: #selector(CSDraggable.panGesture(gesture:)))
         self.addGestureRecognizer(panGesture)
-        self.backgroundColor = .gray
+        self.viewDidLoad()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        //TODO: DRY initizalier
+        self.panGesture = UIPanGestureRecognizer()
+        
+        super.init(coder: aDecoder)
+        self.panGesture.delegate = self
+        self.panGesture.addTarget(self, action: #selector(CSDraggable.panGesture(gesture:)))
+        self.addGestureRecognizer(panGesture)
+        self.viewDidLoad()
     }
     
     /**
@@ -146,16 +157,7 @@ public class CSDraggable: UIView, UIGestureRecognizerDelegate {
         self.startingOrigin = self.frame.origin
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        //TODO: DRY initizalier
-        self.panGesture = UIPanGestureRecognizer()
-        
-        super.init(coder: aDecoder)
-        self.panGesture.delegate = self
-        self.panGesture.addTarget(self, action: #selector(CSDraggable.panGesture(gesture:)))
-        self.addGestureRecognizer(panGesture)
-        self.backgroundColor = .gray
-    }
+    public func viewDidLoad() { }
     
     // MARK: - VOID METHODS
     
