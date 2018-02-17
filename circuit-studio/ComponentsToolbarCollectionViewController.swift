@@ -10,13 +10,7 @@ import UIKit
 
 class ComponentsToolbarCollectionViewController: UICollectionViewController {
     
-    var components: [CSComponent] = [
-        CSComponent(name: "Resistor", caption: "5 Umms", size: CGSize(width: 1, height: 1), image: "resistor"),
-        CSComponent(name: "Capacitor", caption: "5v", size: CGSize(width: 1, height: 2), image: "capacitor"),
-        CSComponent(name: "Diode", caption: "3v", size: CGSize(width: 1, height: 2), image: "diode"),
-        CSComponent(name: "Switch", caption: "1v", size: CGSize(width: 1, height: 2), image: "switch"),
-        CSComponent(name: "Transistor", caption: "1v", size: CGSize(width: 1, height: 2), image: "transistor")
-    ] //FIXME: mock data
+    let viewModel = CanvasViewModel()
     
     weak var parentCanvasViewController: CanvasViewController!
     
@@ -34,19 +28,14 @@ class ComponentsToolbarCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return components.count * 5 //FIXME: mock data
+        return viewModel.components.count * 5 //FIXME: mock data
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComponentCollectionViewCell
         
-        let component = components[indexPath.row % 5]
-        cell.component.image = component.image
-        cell.component.delegate = parentCanvasViewController
-        cell.component.cartesianPlane = parentCanvasViewController.view
-        cell.component.snapGridSize = parentCanvasViewController.gridSize
-        cell.component.snapWhileDragging = true
-        cell.component.isEnabled = false
+        let component = viewModel.components[indexPath.row % 5]
+        cell.component = UIComponent(from: component)
         cell.delegate = parentCanvasViewController
         
         return cell
