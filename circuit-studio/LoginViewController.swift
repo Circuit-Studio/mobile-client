@@ -48,19 +48,6 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
         }
     }
     
-    func login(viewModel: LoginViewModel, didCompleteRegister success: Bool, withError message: String?) {
-        
-        if success {
-            self.dismiss(animated: true, completion: { [weak self] in
-                if let vc = self {
-                    vc.delegate?.loginViewControllerDidLoginSuccessfully(vc)
-                }
-            })
-        } else {
-            self.showAlert(title: "Error", message: message!, actionText: "Dismiss")
-        }
-    }
-    
     // MARK: - IBACTIONS
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -95,7 +82,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
             
             // handle register
         } else if segmentControl.selectedSegmentIndex == 1 {
-            loginModel.register()
+            loginModel.registerAndLogin()
             
 //            let user = UserHTTPBody(username: usernameTextField.text, email: emailTextField.text, password: passwordTextField.text)
 //

@@ -14,7 +14,7 @@ import RxSwift
 
 protocol LoginViewModelDelegate: class {
     func login(viewModel: LoginViewModel, didCompleteLogin success: Bool, withError message: String?)
-    func login(viewModel: LoginViewModel, didCompleteRegister success: Bool, withError message: String?)
+//    func login(viewModel: LoginViewModel, didCompleteRegister success: Bool, withError message: String?)
 }
 
 struct LoginViewModel {
@@ -45,8 +45,16 @@ struct LoginViewModel {
         })
     }
     
-    func register() {
-        
+    func registerAndLogin() {
+        let user = UserHTTPBody(username: username.value, email: email.value, password: password.value)
+        self.registerAndLogin(a: user, callback: { (result) in
+            switch result {
+            case .success:
+                self.delegate.login(viewModel: self, didCompleteLogin: true, withError: nil)
+            case .failure(let error):
+                self.delegate.login(viewModel: self, didCompleteLogin: false, withError: error.localizedDescription)
+            }
+        })
     }
     
     private let apiService = MoyaProvider<CSAPIEndpoints>()
