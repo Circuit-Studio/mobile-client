@@ -8,10 +8,14 @@ target 'circuit-studio' do
   # Network abstraction layer written in Swift.
   pod 'Moya', '~> 10.0'
   
+  
   pod 'SwiftyJSON'
   
   # Helper functions for saving text in Keychain securely for iOS, OS X, tvOS and watchOS.
   pod 'KeychainSwift', '~> 10.0'
+  
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   # Kingfisher is a lightweight library for downloading and caching images from the web.
   ## pod 'Kingfisher', '~> 4.0'

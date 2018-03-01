@@ -10,9 +10,50 @@ import Foundation
 import Moya
 import Result
 import SwiftyJSON
+import RxSwift
+
+protocol LoginViewModelDelegate: class {
+    func login(viewModel: LoginViewModel, didCompleteLogin success: Bool, withError message: String?)
+    func login(viewModel: LoginViewModel, didCompleteRegister success: Bool, withError message: String?)
+}
 
 struct LoginViewModel {
+    
+    var username = Variable<String?>(nil)
+    var email = Variable<String?>(nil)
+    var password = Variable<String?>(nil)
+    
+    unowned var delegate: LoginViewModelDelegate
+    
+    init(delegate: LoginViewModelDelegate) {
+        self.delegate = delegate
+    }
+    
+//    private var user: CSUser {
+//        return CSUser(username: <#T##String#>, email: <#T##String#>)
+//    }
+    
+    func login() {
+        let user = UserHTTPBody(username: username.value, email: email.value, password: password.value)
+        self.login(a: user, callback: { (result) in
+            switch result {
+            case .success:
+                self.delegate.login(viewModel: self, didCompleteLogin: true, withError: nil)
+            case .failure(let error):
+                self.delegate.login(viewModel: self, didCompleteLogin: false, withError: error.localizedDescription)
+            }
+        })
+    }
+    
+    func register() {
+        
+    }
+    
     private let apiService = MoyaProvider<CSAPIEndpoints>()
+
+}
+
+private extension LoginViewModel {
     
     struct CSAPIUserError: Error {
         var errors = [String]()
@@ -124,7 +165,7 @@ struct LoginViewModel {
             }
         }
     }
-
+    
     /**
      Use this if you'd like to combine regerstering a user and if successfull,
      log them in. This implicently calls login(a user, ..) in the success state of

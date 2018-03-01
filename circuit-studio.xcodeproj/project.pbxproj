@@ -17,7 +17,6 @@
 		E913D4A2202A745200243BDE /* Network+RegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E913D4A1202A745200243BDE /* Network+RegisterTests.swift */; };
 		E930FBAE201ECD6D006F6A2A /* CSDraggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */; };
 		E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA72011214100C9CC9E /* AppDelegate.swift */; };
-		E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DA92011214100C9CC9E /* ViewController.swift */; };
 		E9335DAD2011214100C9CC9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335DAB2011214100C9CC9E /* Main.storyboard */; };
 		E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9335DAE2011214100C9CC9E /* circuit_studio.xcdatamodeld */; };
 		E9335DB22011214100C9CC9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB12011214100C9CC9E /* Assets.xcassets */; };
@@ -30,6 +29,7 @@
 		E990F8A8203618E20022EA37 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E990F8A7203618E20022EA37 /* CanvasViewModel.swift */; };
 		E9E583892032A7EF007E4476 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E583882032A7EF007E4476 /* LoginViewModel.swift */; };
 		E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */; };
+		E9F4CCC92048C32A00E9CDDC /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */; };
 		E9F8371520315C44001540ED /* Network+LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8371420315C44001540ED /* Network+LoginTests.swift */; };
 		E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */; };
 		E9FF530220364177000ADB30 /* ComponentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */; };
@@ -70,7 +70,6 @@
 		E930FBAD201ECD6D006F6A2A /* CSDraggable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSDraggable.swift; sourceTree = "<group>"; };
 		E9335DA42011214100C9CC9E /* circuit-studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "circuit-studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DA72011214100C9CC9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E9335DA92011214100C9CC9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E9335DAC2011214100C9CC9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9335DAF2011214100C9CC9E /* circuit_studio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = circuit_studio.xcdatamodel; sourceTree = "<group>"; };
 		E9335DB12011214100C9CC9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		E990F8A7203618E20022EA37 /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
 		E9E583882032A7EF007E4476 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceStack.swift; sourceTree = "<group>"; };
+		E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		E9F8371420315C44001540ED /* Network+LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+LoginTests.swift"; sourceTree = "<group>"; };
 		E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsToolbarCollectionViewController.swift; sourceTree = "<group>"; };
 		E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -138,7 +138,6 @@
 		AE6B8BB72020F88200415E0C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */,
 				E9335DB62011214100C9CC9E /* Info.plist */,
 				E9335DAE2011214100C9CC9E /* circuit_studio.xcdatamodeld */,
 				E9335DA72011214100C9CC9E /* AppDelegate.swift */,
@@ -149,9 +148,8 @@
 		AE6B8BB82020F89800415E0C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E9E583882032A7EF007E4476 /* LoginViewModel.swift */,
-				AEFF9478203619D6000C353F /* LoginViewController.swift */,
-				E9335DA92011214100C9CC9E /* ViewController.swift */,
+				E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */,
+				E9F4CCCA2048C44400E9CDDC /* Login */,
 				E9FF52FF20364094000ADB30 /* Canvas View */,
 			);
 			name = "View Controllers";
@@ -172,6 +170,7 @@
 			children = (
 				E9335DAB2011214100C9CC9E /* Main.storyboard */,
 				E990F8A1203615FF0022EA37 /* Canvas.storyboard */,
+				E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -256,6 +255,15 @@
 				E9335DCC2011214100C9CC9E /* Info.plist */,
 			);
 			path = "circuit-studioUITests";
+			sourceTree = "<group>";
+		};
+		E9F4CCCA2048C44400E9CDDC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E9E583882032A7EF007E4476 /* LoginViewModel.swift */,
+				AEFF9478203619D6000C353F /* LoginViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		E9FF52FF20364094000ADB30 /* Canvas View */ = {
@@ -513,6 +521,8 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -521,6 +531,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,10 +604,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEFF9479203619D6000C353F /* LoginViewController.swift in Sources */,
-				E9335DAA2011214100C9CC9E /* ViewController.swift in Sources */,
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */,
 				E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */,
+				E9F4CCC92048C32A00E9CDDC /* SplashScreenViewController.swift in Sources */,
 				E9FF53052036A145000ADB30 /* UIComponent.swift in Sources */,
 				E9335DA82011214100C9CC9E /* AppDelegate.swift in Sources */,
 				E990F8A4203616350022EA37 /* CanvasViewController.swift in Sources */,
