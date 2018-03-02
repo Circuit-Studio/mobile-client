@@ -31,6 +31,7 @@
 		E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */; };
 		E9F4CCC92048C32A00E9CDDC /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */; };
 		E9F4CCCD2048DA7000E9CDDC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F4CCCC2048DA7000E9CDDC /* Login.storyboard */; };
+		E9F4CCCF2048E1AD00E9CDDC /* NetworkStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4CCCE2048E1AD00E9CDDC /* NetworkStack.swift */; };
 		E9F8371520315C44001540ED /* Network+LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8371420315C44001540ED /* Network+LoginTests.swift */; };
 		E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */; };
 		E9FF530220364177000ADB30 /* ComponentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */; };
@@ -90,6 +91,7 @@
 		E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceStack.swift; sourceTree = "<group>"; };
 		E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		E9F4CCCC2048DA7000E9CDDC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		E9F4CCCE2048E1AD00E9CDDC /* NetworkStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStack.swift; sourceTree = "<group>"; };
 		E9F8371420315C44001540ED /* Network+LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+LoginTests.swift"; sourceTree = "<group>"; };
 		E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsToolbarCollectionViewController.swift; sourceTree = "<group>"; };
 		E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -198,8 +200,10 @@
 			isa = PBXGroup;
 			children = (
 				E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */,
+				E9F4CCCE2048E1AD00E9CDDC /* NetworkStack.swift */,
 				E990F89D20360C890022EA37 /* CSComponent.swift */,
 				E990F89F20360FEC0022EA37 /* CSUser.swift */,
+				E9335DB12011214100C9CC9E /* Assets.xcassets */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -236,7 +240,6 @@
 				AE6B8BB82020F89800415E0C /* View Controllers */,
 				AE6B8BB72020F88200415E0C /* Supporting Files */,
 				E930FBAA201EC737006F6A2A /* Models */,
-				E9335DB12011214100C9CC9E /* Assets.xcassets */,
 			);
 			path = "circuit-studio";
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEFF9479203619D6000C353F /* LoginViewController.swift in Sources */,
+				E9F4CCCF2048E1AD00E9CDDC /* NetworkStack.swift in Sources */,
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */,
 				E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */,

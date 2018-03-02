@@ -14,13 +14,18 @@ import Moya
 #else
     var apiBaseUrl = "http://circuit.studio"
 #endif
-    
 
 //TODO: refactor into codable class for both register and login
 struct UserHTTPBody: Codable {
-    let username: String? // 6 chars or more
-    let email: String? // valid email
-    let password: String? // 6 chars or more
+    let username: String?
+    let email: String
+    let password: String
+}
+
+extension CSUser {
+    var httpUserBody: UserHTTPBody {
+        return UserHTTPBody(username: self.username, email: self.email, password: self.password)
+    }
 }
 
 enum CSAPIEndpoints {

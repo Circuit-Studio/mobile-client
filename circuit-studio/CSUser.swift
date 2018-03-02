@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CSUser {
+struct CSUser: Codable {
     let username: String?
     let email: String
     let password: String
@@ -19,8 +19,7 @@ struct CSUser {
         self.password = password
     }
     
-    //TODO: get the current user
-//    static func currentUser() -> CSUser? {
-//
-//    }
+    static func currentUser() -> CSUser? {
+        return PersistenceStack.user
+    }
 }

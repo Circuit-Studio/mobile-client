@@ -41,4 +41,33 @@ struct PersistenceStack {
             return ud.string(forKey: LOGGED_IN_USER_ID)
         }
     }
+    
+    fileprivate static let LOGGED_IN_USER = "LOGGED_IN_USER"
+    static var user: CSUser? {
+        set {
+            let keychain = KeychainSwift()
+            if let user = newValue {
+                guard let userData = try? JSONEncoder().encode(user) else {
+                    fatalError("Cannot encode CSUser")
+                }
+                
+                keychain.set(userData, forKey: LOGGED_IN_USER)
+            } else {
+                keychain.delete(LOGGED_IN_USER)
+            }
+        }
+        get {
+            let keychain = KeychainSwift()
+            
+            if let userData = keychain.get(LOGGED_IN_USER) as! Data? {
+                guard let user = try? JSONDecoder().decode(CSUser.self, from: userData) else {
+                    fatalError("Cannot decode CSUser")
+                }
+                
+                return user
+            } else {
+                return nil
+            }
+        }
+    }
 }
