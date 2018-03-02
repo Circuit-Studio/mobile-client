@@ -19,9 +19,11 @@ protocol LoginViewModelDelegate: class {
 
 struct LoginViewModel {
     
-    var username = Variable<String?>(nil)
-    var email = Variable<String?>(nil)
-    var password = Variable<String?>(nil)
+    private(set) var username = Variable<String?>(nil)
+    private(set) var email = Variable<String?>(nil)
+    private(set) var password = Variable<String?>(nil)
+    
+    private let apiService = MoyaProvider<CSAPIEndpoints>()
     
     unowned var delegate: LoginViewModelDelegate
     
@@ -29,6 +31,14 @@ struct LoginViewModel {
         self.delegate = delegate
     }
     
+    /**
+     Checks if the fields, either username and email and password or only email
+     and password, have met the requirements (length and valid email)
+     
+     - parameter forLogin: check which fields to validate
+     
+     - parameter invalidHandler: this is invoked when validation has failed
+     */
     func validateInputFields(forLogin: Bool, invalidHandler: () -> ()) {
         guard
             let email = email.value,
@@ -55,6 +65,11 @@ struct LoginViewModel {
         }
     }
     
+    /**
+     invokes the login network call and stores the successful response onto disk
+     
+     - precondition: username, email and password must be validated using validateInputFields(..)
+     */
     func login() {
         let user = UserHTTPBody(username: username.value, email: email.value, password: password.value)
         self.login(a: user, callback: { (result) in
@@ -67,6 +82,12 @@ struct LoginViewModel {
         })
     }
     
+    /**
+     invokes the registerAdnLogin network call and stores the successful
+     response from the login
+     
+     - precondition: username, email and password must be validated using validateInputFields(..)
+     */
     func registerAndLogin() {
         let user = UserHTTPBody(username: username.value, email: email.value, password: password.value)
         self.registerAndLogin(a: user, callback: { (result) in
@@ -78,11 +99,12 @@ struct LoginViewModel {
             }
         })
     }
-    
-    private let apiService = MoyaProvider<CSAPIEndpoints>()
 
 }
 
+/**
+ Moya extension
+ */
 private extension LoginViewModel {
     
     struct CSAPIUserError: Error {

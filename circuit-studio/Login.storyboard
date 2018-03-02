@@ -130,14 +130,14 @@
                                 </constraints>
                                 <state key="normal" title="X"/>
                                 <connections>
-                                    <action selector="pressDismiss:" destination="q0K-Pf-lqL" eventType="touchUpInside" id="CSx-BZ-3in"/>
+                                    <action selector="pressDismiss:" destination="q0K-Pf-lqL" eventType="touchUpInside" id="jqq-iT-H2x"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Otb-uV-ZhU" firstAttribute="centerY" secondItem="68Y-B0-ILl" secondAttribute="centerY" id="9L3-HQ-eYB"/>
-                            <constraint firstItem="bQQ-M0-dCC" firstAttribute="top" secondItem="BoR-8E-6tq" secondAttribute="top" id="aIN-R6-Lrb"/>
+                            <constraint firstItem="bQQ-M0-dCC" firstAttribute="top" secondItem="68Y-B0-ILl" secondAttribute="top" constant="20" id="aIN-R6-Lrb"/>
                             <constraint firstItem="Otb-uV-ZhU" firstAttribute="centerX" secondItem="68Y-B0-ILl" secondAttribute="centerX" id="qPD-uA-rXR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bQQ-M0-dCC" secondAttribute="trailing" id="tZX-K4-mDO"/>
                         </constraints>

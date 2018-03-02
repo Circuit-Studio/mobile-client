@@ -27,20 +27,21 @@ class ComponentsToolbarCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return components.count * 5 //FIXME: mock data
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ComponentCollectionViewCell
         
-        let component = components[indexPath.row % 5]
+        //TODO: use factories
+        // Create a component to copy from when a user drags from the collection
+        //to the canvas
+        let component = components[indexPath.row % 5] //FIXME: mock data
         cell.component.image = component.image
         cell.component.delegate = parentCanvasViewController
         cell.component.cartesianPlane = parentCanvasViewController.view
@@ -61,6 +62,7 @@ class ComponentsToolbarCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // register the cell
         let cellNib = UINib(nibName: "ComponentCollectionViewCell", bundle: Bundle.main)
         self.collectionView!.register(cellNib, forCellWithReuseIdentifier: "cell")
     }

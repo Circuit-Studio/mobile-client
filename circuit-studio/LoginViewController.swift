@@ -78,7 +78,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
         }
     }
     
-    @IBAction func pressDismiss(sender: AnyObject) {
+    @IBAction func pressDismiss(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
     

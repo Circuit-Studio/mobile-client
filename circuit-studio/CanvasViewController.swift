@@ -44,23 +44,33 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     func componentCell(_ cell: ComponentCollectionViewCell, didLongPress gesture: UILongPressGestureRecognizer) {
         switch gesture.state {
         case .began:
+            
+            //TODO: use factories to create a UIComponent
+            // create a new component from the cell that is being dragged from `cell.component`
             newDraggable = UIComponent(from: cell.component)
         case .changed:
             guard let draggable = newDraggable else { return }
+            
             draggable.snap(to: gesture.location(in: draggable.cartesianPlane), alignedToGrid: true)
         case .ended:
             guard
                 let draggable = newDraggable,
                 let originalOrigin = draggable.startingOrigin
-                else { return }
+                else {
+                    return
+            }
             
+            // delete the new copy if the user did not move it from its original
+            //position
             if originalOrigin == draggable.frame.origin {
                 draggable.removeFromSuperview()
-                newDraggable = nil
             } else {
+                
                 //TODO: validate location of new location
                 draggable.snap()
             }
+            
+            newDraggable = nil
         default:
             break
         }
@@ -68,38 +78,43 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     
     // MARK: CSDraggable Delegate
     
-    func draggable(view: CSDraggable, didEndWith gesture: UIPanGestureRecognizer) {
-        //view.returnToOriginPosition(animated: true)
-    }
-    
     // MARK: - IBACTIONS
     
     @IBAction func pressRenameDoc(_ sender: Any) {
         
     }
+    
     @IBAction func pressDocInfo(_ sender: Any) {
         
     }
+    
     @IBOutlet weak var buttonProfile: UIButton!
     @IBAction func pressUserProfile(_ sender: Any) {
         
     }
+    
     @IBOutlet weak var segComponentsTab: UISegmentedControl!
     @IBAction func segComponentsTabDidChange(_ sender: Any) {
         
     }
+    
     @IBAction func pressWireTool(_ sender: Any) {
         
     }
+    
     @IBAction func pressSelectTool(_ sender: Any) {
         
     }
+    
     @IBAction func pressTextboxTool(_ sender: Any) {
         
     }
+    
     @IBAction func pressShapeTool(_ sender: Any) {
         
     }
+    
     // MARK: - LIFE CYCLE
-
+    
 }
+

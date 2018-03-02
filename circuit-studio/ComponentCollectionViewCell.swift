@@ -15,11 +15,20 @@ import UIKit
 class ComponentCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: ComponentCollectionViewCellDeletate?
-
+    
+    @IBOutlet weak var component: UIComponent!
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - VOID METHODS
+    
+    // MARK: - IBACTIONS
+    
     @objc func didLongPress(_ sender: Any) {
         delegate?.componentCell?(self, didLongPress: sender as! UILongPressGestureRecognizer)
     }
-    @IBOutlet weak var component: UIComponent!
+    
+    // MARK: - LIFE CYCLE
     
     override func awakeFromNib() {
         super.awakeFromNib()
