@@ -22,4 +22,8 @@ struct CSUser: Codable {
     static func currentUser() -> CSUser? {
         return PersistenceStack.user
     }
+    
+    static func logoutUser() {
+        PersistenceStack.logoutUser()
+    }
 }

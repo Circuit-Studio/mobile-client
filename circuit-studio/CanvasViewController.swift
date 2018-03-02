@@ -90,7 +90,14 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     
     @IBOutlet weak var buttonProfile: UIButton!
     @IBAction func pressUserProfile(_ sender: Any) {
-        
+        if let _ = CSUser.currentUser() {
+            //TODO: perform segue to a profile popover instead of logging out
+            CSUser.logoutUser()
+            
+            buttonProfile.setTitle("Login", for: .normal)
+        } else {
+            self.performSegue(withIdentifier: "show login", sender: nil)
+        }
     }
     
     @IBOutlet weak var segComponentsTab: UISegmentedControl!
@@ -116,5 +123,17 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     
     // MARK: - LIFE CYCLE
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let username: String
+        if let loggedInUser = CSUser.currentUser() {
+            username = loggedInUser.username!
+        } else {
+            username = "Login"
+        }
+        
+        buttonProfile.setTitle(username, for: .normal)
+    }
 }
 

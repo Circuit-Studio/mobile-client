@@ -11,6 +11,12 @@ import KeychainSwift
 
 struct PersistenceStack {
     
+    static func logoutUser() {
+        self.user = nil
+        self.userToken = nil
+        self.userId = nil
+    }
+    
     fileprivate static let LOGGED_IN_TOKEN = "LOGGED_IN_TOKEN"
     static var userToken: String? {
         set {
@@ -59,7 +65,7 @@ struct PersistenceStack {
         get {
             let keychain = KeychainSwift()
             
-            if let userData = keychain.get(LOGGED_IN_USER) as! Data? {
+            if let userData = keychain.getData(LOGGED_IN_USER) {
                 guard let user = try? JSONDecoder().decode(CSUser.self, from: userData) else {
                     fatalError("Cannot decode CSUser")
                 }

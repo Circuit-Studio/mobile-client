@@ -114,9 +114,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="pressUserProfile:" destination="keX-Fk-pMI" eventType="touchUpInside" id="STp-4y-HGy"/>
-                                                    <segue destination="UhL-15-NM3" kind="popoverPresentation" popoverAnchorView="bN2-YJ-UXm" id="azP-UL-GfS">
-                                                        <popoverArrowDirection key="popoverArrowDirection" down="YES"/>
-                                                    </segue>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -189,6 +186,9 @@
                         <outlet property="containerComponentToolbar" destination="DSu-XO-VxJ" id="92u-ma-BW1"/>
                         <outlet property="labelDocTitle" destination="Djc-ep-uxC" id="DZA-P2-vfj"/>
                         <outlet property="segComponentsTab" destination="GBh-F9-3ZR" id="Zjt-qt-jxy"/>
+                        <segue destination="UhL-15-NM3" kind="popoverPresentation" identifier="show login" popoverAnchorView="bN2-YJ-UXm" id="51X-UO-8tf">
+                            <popoverArrowDirection key="popoverArrowDirection" down="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxh-eR-uuw" userLabel="First Responder" sceneMemberID="firstResponder"/>

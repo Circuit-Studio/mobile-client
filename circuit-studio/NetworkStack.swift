@@ -124,7 +124,8 @@ struct NetworkStack {
                     
                     PersistenceStack.userToken = token
                     PersistenceStack.userId = id
-                    PersistenceStack.user = user
+                    // create a CSUser since loggining does not require the username from the user
+                    PersistenceStack.user = CSUser(username: username, email: user.email, password: user.password)
                     
                     callback(.success(result))
                     
