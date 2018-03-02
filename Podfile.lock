@@ -6,6 +6,7 @@ PODS:
   - Moya/Core (10.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
+  - NextResponderTextField (3.0.0)
   - Nimble (7.0.3)
   - Quick (1.2.0)
   - Result (3.2.4)
@@ -17,6 +18,7 @@ PODS:
 DEPENDENCIES:
   - KeychainSwift (~> 10.0)
   - Moya (~> 10.0)
+  - NextResponderTextField
   - Nimble
   - Quick
   - RxCocoa
@@ -27,6 +29,7 @@ SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   KeychainSwift: f9f7910449a0c0fd2cabc889121530dd2c477c33
   Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
+  NextResponderTextField: 07ee7b2737981bfd402f63f390bf3de55e245ccd
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
@@ -34,6 +37,6 @@ SPEC CHECKSUMS:
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 6d4519d12baf5d6b010e73bf2ae61b78e3e70145
+PODFILE CHECKSUM: e5a83bcc1eb918b3099d79e48eecf49fd6d5dc84
 
 COCOAPODS: 1.3.1
