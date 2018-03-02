@@ -30,6 +30,7 @@
 		E9E583892032A7EF007E4476 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E583882032A7EF007E4476 /* LoginViewModel.swift */; };
 		E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */; };
 		E9F4CCC92048C32A00E9CDDC /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */; };
+		E9F4CCCD2048DA7000E9CDDC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F4CCCC2048DA7000E9CDDC /* Login.storyboard */; };
 		E9F8371520315C44001540ED /* Network+LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8371420315C44001540ED /* Network+LoginTests.swift */; };
 		E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */; };
 		E9FF530220364177000ADB30 /* ComponentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */; };
@@ -88,6 +89,7 @@
 		E9E583882032A7EF007E4476 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceStack.swift; sourceTree = "<group>"; };
 		E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		E9F4CCCC2048DA7000E9CDDC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E9F8371420315C44001540ED /* Network+LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network+LoginTests.swift"; sourceTree = "<group>"; };
 		E9FF52FD20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsToolbarCollectionViewController.swift; sourceTree = "<group>"; };
 		E9FF530020364177000ADB30 /* ComponentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				E9335DAB2011214100C9CC9E /* Main.storyboard */,
+				E9F4CCCC2048DA7000E9CDDC /* Login.storyboard */,
 				E990F8A1203615FF0022EA37 /* Canvas.storyboard */,
 				E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */,
 			);
@@ -409,6 +412,7 @@
 			files = (
 				E990F8A2203615FF0022EA37 /* Canvas.storyboard in Resources */,
 				E9FF530320364177000ADB30 /* ComponentCollectionViewCell.xib in Resources */,
+				E9F4CCCD2048DA7000E9CDDC /* Login.storyboard in Resources */,
 				E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */,
 				E9335DB22011214100C9CC9E /* Assets.xcassets in Resources */,
 				E9335DAD2011214100C9CC9E /* Main.storyboard in Resources */,

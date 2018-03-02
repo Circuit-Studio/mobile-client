@@ -78,6 +78,10 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
         }
     }
     
+    @IBAction func pressDismiss(sender: AnyObject) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
+    
     // MARK: - LIFE CYCLE
     
     override func viewDidLayoutSubviews() {
