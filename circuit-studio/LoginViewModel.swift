@@ -29,9 +29,31 @@ struct LoginViewModel {
         self.delegate = delegate
     }
     
-//    private var user: CSUser {
-//        return CSUser(username: <#T##String#>, email: <#T##String#>)
-//    }
+    func validateInputFields(forLogin: Bool, invalidHandler: () -> ()) {
+        guard
+            let email = email.value,
+            let password = password.value
+            else {
+                return invalidHandler()
+        }
+        
+        //validate email and password only, user is logging in
+        if forLogin {
+            if email == "" || password == "" {
+                invalidHandler()
+            }
+            
+        //validate all fields, user is registering
+        } else {
+            guard let username = username.value else {
+                return invalidHandler()
+            }
+            
+            if email == "" || password == "" || username == "" {
+                invalidHandler()
+            }
+        }
+    }
     
     func login() {
         let user = UserHTTPBody(username: username.value, email: email.value, password: password.value)
@@ -65,6 +87,12 @@ private extension LoginViewModel {
     
     struct CSAPIUserError: Error {
         var errors = [String]()
+        
+        var localizedDescription: String {
+            
+            // combine the list of errors in sentences
+            return self.errors.reduce("", { $0 + "\($1)\n"} )
+        }
     }
     
     /**
@@ -87,7 +115,9 @@ private extension LoginViewModel {
                 }
                 
                 switch response.statusCode {
-                case 400: //Bad Request (missing fileds, invalid email/username/password
+                    
+                //Bad Request (missing fileds, invalid email/username/password
+                case 400:
                     if let errorMessages = responseJson["message"]?.arrayObject as! [String]? {
                         var err = CSAPIUserError()
                         for aMessage in errorMessages {
@@ -102,12 +132,16 @@ private extension LoginViewModel {
                     } else {
                         assertionFailure("could not json -> [String] nor json -> String")
                     }
-                case 403: //Forbidden - Already taken email/username
+                    
+                //Forbidden - Already taken email/username
+                case 403:
                     //FIXME: separate already taken emails and usernames into two different cases once the API returns each case
                     let err = CSAPIUserError(errors: ["A user already exists with that username or email address."])
                     
                     callback(.failure(err))
-                case 201: //Created
+                    
+                //Created
+                case 201:
                     guard
                         let statusMessage = responseJson["message"]?.string
                         else {
@@ -143,7 +177,9 @@ private extension LoginViewModel {
                 }
                 
                 switch response.statusCode {
-                case 200: //success
+                    
+                //success
+                case 200:
                     guard
                         let data = responseJson["data"],
                         let token = data["token"].string,
@@ -158,7 +194,9 @@ private extension LoginViewModel {
                     PersistenceStack.userId = id
                     
                     callback(.success(result))
-                case 400, 401, 500: //empty fields, User not found, wrong password, internal server error
+                    
+                //empty fields, User not found, wrong password, internal server error
+                case 400, 401, 500:
                     guard let message = responseJson["message"]?.string else {
                         return assertionFailure("count not parse message")
                     }
@@ -183,6 +221,8 @@ private extension LoginViewModel {
         register(a: user, callback: { result in
             switch result {
             case .success:
+                
+                // now, login the user
                 self.login(a: user, callback: { (result) in
                     switch result {
                     case .success(let data):

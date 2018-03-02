@@ -44,65 +44,29 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
                 }
             })
         } else {
-            self.showAlert(title: "Error", message: message!, actionText: "Dismiss")
+            self.showAlert(title: "Logging In", message: message!, actionText: "Dismiss")
         }
     }
     
     // MARK: - IBACTIONS
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        if emailTextField.text == "" || passwordTextField.text == "" {
+        let userLoggingIn = segmentControl.selectedSegmentIndex == 0
+        
+        loginModel.validateInputFields(forLogin: userLoggingIn) {
             self.showAlert(title: "Error", message: "Please enter all fields", actionText: "Dismiss")
-            return
-        }
-        if usernameTextField.text == "" && segmentControl.selectedSegmentIndex == 1 {
-            self.showAlert(title: "Error", message: "Please enter all fields", actionText: "Dismiss")
+            
             return
         }
         
-        // handle login
-        if segmentControl.selectedSegmentIndex == 0 {
+        if userLoggingIn {
             loginModel.login()
-            
-//            let user = UserHTTPBody(username: nil, email: emailTextField.text, password: passwordTextField.text)
-//
-//            loginModel.login(a: user, callback: { (result) in
-//                switch result {
-//                case .success:
-//                    print("success")
-//                    self.dismiss(animated: true, completion: { [weak self] in
-//                        if let vc = self {
-//                            vc.delegate?.loginViewControllerDidLoginSuccessfully(vc)
-//                        }
-//                    })
-//                case .failure(let error):
-//                    self.showAlert(title: "Error", message: String(describing: error.errors), actionText: "Dismiss")
-//                }
-//            })
-            
-            // handle register
-        } else if segmentControl.selectedSegmentIndex == 1 {
+        } else {
             loginModel.registerAndLogin()
-            
-//            let user = UserHTTPBody(username: usernameTextField.text, email: emailTextField.text, password: passwordTextField.text)
-//
-//            loginModel.registerAndLogin(a: user, callback: { (result) in
-//                switch result {
-//                case .success:
-//                    self.dismiss(animated: true, completion: { [weak self] in
-//                        if let vc = self {
-//                            vc.delegate?.loginViewControllerDidLoginSuccessfully(vc)
-//                        }
-//                    })
-//                case .failure(let error):
-//                    self.showAlert(title: "Error", message: String(describing: error.errors), actionText: "Dismiss")
-//                }
-//            })
         }
     }
     
     @IBAction func segmentValueChanged(_ sender: Any) {
-        print("changed")
         if segmentControl.selectedSegmentIndex == 0 {
             self.loginButton.setTitle("Login", for: .normal)
             self.usernameTextField.isHidden = true

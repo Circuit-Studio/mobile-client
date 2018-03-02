@@ -8,12 +8,19 @@
 
 import Foundation
 
-struct CSUser: Codable {
-    let username: String
+struct CSUser {
+    let username: String?
     let email: String
+    let password: String
     
-    init(username: String, email: String) {
+    init(username: String? = nil, email: String, password: String) {
         self.username = username
         self.email = email
+        self.password = password
     }
+    
+    //TODO: get the current user
+//    static func currentUser() -> CSUser? {
+//
+//    }
 }

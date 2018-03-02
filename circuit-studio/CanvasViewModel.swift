@@ -7,12 +7,10 @@
 //
 
 import Foundation
-//TODO: REMOVE UIKIT
-import UIKit
 
 struct CanvasViewModel {
     var documentTitle: String = "Untitled" //FIXME: mock data
     
-    var loggedInUser: CSUser = CSUser(username: "JohnnyApps", email: "e@d.com") //FIXME: mock data
+//    var loggedInUser: CSUser = CSUser(username: "JohnnyApps", email: "e@d.com") //FIXME: mock data
     
 }
