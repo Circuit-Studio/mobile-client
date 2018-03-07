@@ -8,19 +8,46 @@
 
 import UIKit
 
-class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentCollectionViewCellDeletate {
+class CanvasViewController: UIViewController, CSDraggableDelegate, UICanvasDelegate, ComponentCollectionViewCellDeletate {
     
     @IBOutlet weak var labelDocTitle: UILabel!
     @IBOutlet weak var containerComponentToolbar: UIView!
     private weak var componentToolbarCollectionViewController: ComponentsToolbarCollectionViewController!
     
+    private enum Toolbar {
+        case None
+        case WireTool
+        case CursorTool
+        case TextBoxTool
+        case ShapeTool
+    }
+    private var selectedTool = Toolbar.None
+    
     private var viewModel = CanvasViewModel()
+    
+    var canvas: UICanvas {
+        return self.view as! UICanvas
+    }
     
     var gridSize = CGSize(width: 64, height: 64)
     
     // MARK: - RETURN VALUES
     
     // MARK: - VOID METHODS
+    
+    private func select(_ tool: Toolbar) {
+        if self.selectedTool == tool {
+            self.selectedTool = .None
+        } else {
+            self.selectedTool = tool
+        }
+        
+        if self.selectedTool == .CursorTool {
+            self.canvas.enableItems(true)
+        } else {
+            self.canvas.enableItems(false)
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
@@ -76,7 +103,19 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
         }
     }
     
+    // MARK: UICanvas Delegate
+    
+    func canvas(view: UICanvas, didTap gesture: UITapGestureRecognizer, at location: CGPoint) {
+        print(location)
+    }
+    
     // MARK: CSDraggable Delegate
+    
+//    func draggable(view: CSDraggable, willBeginWith gesture: UIPanGestureRecognizer) {
+//        if selectedTool != .CursorTool {
+////            gesture.
+//        }
+//    }
     
     // MARK: - IBACTIONS
     
@@ -106,19 +145,19 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, ComponentColl
     }
     
     @IBAction func pressWireTool(_ sender: Any) {
-        
+        self.select(.WireTool)
     }
     
     @IBAction func pressSelectTool(_ sender: Any) {
-        
+        self.select(.CursorTool)
     }
     
     @IBAction func pressTextboxTool(_ sender: Any) {
-        
+        self.select(.TextBoxTool)
     }
     
     @IBAction func pressShapeTool(_ sender: Any) {
-        
+        self.select(.ShapeTool)
     }
     
     // MARK: - LIFE CYCLE

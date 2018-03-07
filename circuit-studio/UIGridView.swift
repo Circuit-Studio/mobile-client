@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class GridView: UIView {
+class UIGridView: UIView {
     
     @IBInspectable
     public var minorGridSize: Int = 32

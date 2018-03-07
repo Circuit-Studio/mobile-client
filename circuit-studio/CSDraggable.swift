@@ -31,6 +31,9 @@ public class CSDraggable: UIImageView, UIGestureRecognizerDelegate {
     
     private var panGesture: UIPanGestureRecognizer
     
+    /** a flag whether to silence the pan gesture or not */
+    public var isDraggableEnabled: Bool = true
+    
     /**
      Starting point of the draggable's origin point
      
@@ -203,7 +206,13 @@ public class CSDraggable: UIImageView, UIGestureRecognizerDelegate {
     }
     
     @objc private func panGesture(gesture: UIPanGestureRecognizer) {
-        guard let mySuperview = cartesianPlane, self.isEnabled == true else { return }
+        guard
+            let mySuperview = cartesianPlane,
+            self.isEnabled == true,
+            self.isDraggableEnabled == true
+            else {
+                return
+        }
         
         let transformation = gesture.translation(in: mySuperview)
         switch gesture.state {

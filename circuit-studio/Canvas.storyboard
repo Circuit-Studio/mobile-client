@@ -19,11 +19,11 @@
             </objects>
             <point key="canvasLocation" x="154" y="-461"/>
         </scene>
-        <!--Canvas View Controller-->
+        <!--Delegate-->
         <scene sceneID="qEE-bk-Qpg">
             <objects>
                 <viewController id="keX-Fk-pMI" customClass="CanvasViewController" customModule="circuit_studio" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="X5Z-in-axD" customClass="GridView" customModule="circuit_studio" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="X5Z-in-axD" customClass="UICanvas" customModule="circuit_studio" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -147,7 +147,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSu-XO-VxJ">
-                                        <rect key="frame" x="0.0" y="40" width="132" height="660"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="132" height="700"/>
                                         <connections>
                                             <segue destination="DSi-d1-mNy" kind="embed" identifier="embeded collection controller" id="uxZ-iy-fbX"/>
                                         </connections>
@@ -156,6 +156,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="sHT-R9-ePr"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="GBh-F9-3ZR"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -180,6 +185,9 @@
                                 <integer key="value" value="2"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="delegate" destination="keX-Fk-pMI" id="Kxm-ty-lHH"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="buttonProfile" destination="bN2-YJ-UXm" id="Ei1-60-5OY"/>
@@ -200,7 +208,7 @@
             <objects>
                 <collectionViewController id="DSi-d1-mNy" customClass="ComponentsToolbarCollectionViewController" customModule="circuit_studio" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fi2-Lx-N3O">
-                        <rect key="frame" x="0.0" y="0.0" width="132" height="660"/>
+                        <rect key="frame" x="0.0" y="0.0" width="132" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wiW-Qr-h2o">
