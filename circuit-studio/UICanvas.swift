@@ -53,7 +53,6 @@ class UICanvas: UIGridView {
     @objc private func didPan(_ gesture: UIPanGestureRecognizer) {
         let location = gesture.location(in: self)
         delegate?.canvas?(view: self, didPan: gesture, at: location)
-        
     }
     
     // MARK: - IBACTIONS

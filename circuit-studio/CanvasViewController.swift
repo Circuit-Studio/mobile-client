@@ -105,8 +105,30 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, UICanvasDeleg
     
     // MARK: UICanvas Delegate
     
+    private var tapLocation: CGPoint?
     func canvas(view: UICanvas, didTap gesture: UITapGestureRecognizer, at location: CGPoint) {
-        print(location)
+        if self.selectedTool == .TextBoxTool {
+            tapLocation = location
+            let alert = UIAlertController(title: "Textbox Tool", message: "enter the text", preferredStyle: .alert)
+            alert.addTextField(defaultText: nil, placeholderText: "textbox text")
+                .addButton(title: "Cancel")
+                .addButton(title: "Add", with: { [weak self] (action) in
+                    guard
+                        let unweakSelf = self,
+                        let point = unweakSelf.tapLocation,
+                        let text = alert.inputField.text
+                        else {
+                            return
+                    }
+                    
+                    //TODO: use a factory
+                    let label = UILabel(frame: CGRect(origin: point, size: CGSize.zero))
+                    label.text = text
+                    label.sizeToFit()
+                    unweakSelf.canvas.addSubview(label)
+                })
+                .present(in: self)
+        }
     }
     
     // MARK: CSDraggable Delegate
