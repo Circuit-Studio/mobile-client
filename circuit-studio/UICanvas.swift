@@ -37,7 +37,9 @@ class UICanvas: UIGridView {
     
     // MARK: - VOID METHODS
     
+    var isCanvasEnabled = false
     public func enableItems(_ enabled: Bool) {
+        isCanvasEnabled = enabled
         for anItem in self.items {
             anItem.isDraggableEnabled = enabled
         }

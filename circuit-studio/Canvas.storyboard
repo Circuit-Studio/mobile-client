@@ -191,6 +191,10 @@
                     </view>
                     <connections>
                         <outlet property="buttonProfile" destination="bN2-YJ-UXm" id="Ei1-60-5OY"/>
+                        <outlet property="buttonSelectTool" destination="F2Z-VT-pcW" id="Awd-lg-TVx"/>
+                        <outlet property="buttonShapeTool" destination="bt0-VG-cnw" id="4sz-vN-BBz"/>
+                        <outlet property="buttonTextTool" destination="Nrp-QV-ImQ" id="lfe-Lb-SmA"/>
+                        <outlet property="buttonWireTool" destination="rNe-Jl-1VW" id="5ln-qR-RBS"/>
                         <outlet property="containerComponentToolbar" destination="DSu-XO-VxJ" id="92u-ma-BW1"/>
                         <outlet property="labelDocTitle" destination="Djc-ep-uxC" id="DZA-P2-vfj"/>
                         <outlet property="segComponentsTab" destination="GBh-F9-3ZR" id="Zjt-qt-jxy"/>

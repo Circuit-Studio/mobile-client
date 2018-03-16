@@ -69,6 +69,6 @@ struct CSComponent: Codable {
         self.caption = caption
         self.captionX = 0.5
         self.captionY = 0.5
-        self.image = UIImage(named: image)
+        self.image = UIImage(named: image.lowercased())
     }
 }

@@ -36,6 +36,8 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, UICanvasDeleg
     // MARK: - VOID METHODS
     
     private func select(_ tool: Toolbar) {
+        
+        // deselect the same tool that was selected
         if self.selectedTool == tool {
             self.selectedTool = .None
         } else {
@@ -46,6 +48,36 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, UICanvasDeleg
             self.canvas.enableItems(true)
         } else {
             self.canvas.enableItems(false)
+        }
+        
+        let selectColor = UIColor.blue
+        let deselectColor = UIColor.clear
+        switch self.selectedTool {
+        case .None:
+            buttonWireTool.backgroundColor = deselectColor
+            buttonSelectTool.backgroundColor = deselectColor
+            buttonTextTool.backgroundColor = deselectColor
+            buttonShapeTool.backgroundColor = deselectColor
+        case .WireTool:
+            buttonWireTool.backgroundColor = selectColor
+            buttonSelectTool.backgroundColor = deselectColor
+            buttonTextTool.backgroundColor = deselectColor
+            buttonShapeTool.backgroundColor = deselectColor
+        case .CursorTool:
+            buttonWireTool.backgroundColor = deselectColor
+            buttonSelectTool.backgroundColor = selectColor
+            buttonTextTool.backgroundColor = deselectColor
+            buttonShapeTool.backgroundColor = deselectColor
+        case .TextBoxTool:
+            buttonWireTool.backgroundColor = deselectColor
+            buttonSelectTool.backgroundColor = deselectColor
+            buttonTextTool.backgroundColor = selectColor
+            buttonShapeTool.backgroundColor = deselectColor
+        case .ShapeTool:
+            buttonWireTool.backgroundColor = deselectColor
+            buttonSelectTool.backgroundColor = deselectColor
+            buttonTextTool.backgroundColor = deselectColor
+            buttonShapeTool.backgroundColor = selectColor
         }
     }
     
@@ -75,6 +107,7 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, UICanvasDeleg
             //TODO: use factories to create a UIComponent
             // create a new component from the cell that is being dragged from `cell.component`
             newDraggable = UIComponent(from: cell.component)
+            newDraggable?.isDraggableEnabled = self.canvas.isCanvasEnabled
         case .changed:
             guard let draggable = newDraggable else { return }
             
@@ -166,18 +199,22 @@ class CanvasViewController: UIViewController, CSDraggableDelegate, UICanvasDeleg
         
     }
     
+    @IBOutlet weak var buttonWireTool: UIButton!
     @IBAction func pressWireTool(_ sender: Any) {
         self.select(.WireTool)
     }
     
+    @IBOutlet weak var buttonSelectTool: UIButton!
     @IBAction func pressSelectTool(_ sender: Any) {
         self.select(.CursorTool)
     }
     
+    @IBOutlet weak var buttonTextTool: UIButton!
     @IBAction func pressTextboxTool(_ sender: Any) {
         self.select(.TextBoxTool)
     }
     
+    @IBOutlet weak var buttonShapeTool: UIButton!
     @IBAction func pressShapeTool(_ sender: Any) {
         self.select(.ShapeTool)
     }
