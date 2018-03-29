@@ -22,13 +22,13 @@
 		E9335DB22011214100C9CC9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB12011214100C9CC9E /* Assets.xcassets */; };
 		E9335DB52011214100C9CC9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9335DB32011214100C9CC9E /* LaunchScreen.storyboard */; };
 		E9335DCB2011214100C9CC9E /* circuit_studioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */; };
+		E97AE1FC206D951E0014CE18 /* UniversalExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97AE1FB206D951E0014CE18 /* UniversalExtentions.swift */; };
 		E990F89E20360C890022EA37 /* CSComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E990F89D20360C890022EA37 /* CSComponent.swift */; };
 		E990F8A020360FEC0022EA37 /* CSUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E990F89F20360FEC0022EA37 /* CSUser.swift */; };
 		E990F8A2203615FF0022EA37 /* Canvas.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E990F8A1203615FF0022EA37 /* Canvas.storyboard */; };
 		E990F8A4203616350022EA37 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E990F8A3203616350022EA37 /* CanvasViewController.swift */; };
 		E990F8A8203618E20022EA37 /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E990F8A7203618E20022EA37 /* CanvasViewModel.swift */; };
 		E9C8EEEB204F702A0076D884 /* UICanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8EEEA204F702A0076D884 /* UICanvas.swift */; };
-		E9C8EEED204F79A60076D884 /* UniversalExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C8EEEC204F79A60076D884 /* UniversalExtentions.swift */; };
 		E9E583892032A7EF007E4476 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E583882032A7EF007E4476 /* LoginViewModel.swift */; };
 		E9E5838D2032AB1B007E4476 /* PresistenceStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */; };
 		E9F4CCC92048C32A00E9CDDC /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */; };
@@ -84,13 +84,13 @@
 		E9335DC62011214100C9CC9E /* circuit-studioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "circuit-studioUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9335DCA2011214100C9CC9E /* circuit_studioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circuit_studioUITests.swift; sourceTree = "<group>"; };
 		E9335DCC2011214100C9CC9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E97AE1FB206D951E0014CE18 /* UniversalExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalExtentions.swift; path = "../../../Developer/My Projects/Swift Source Files/UniversalExtentions.swift"; sourceTree = "<group>"; };
 		E990F89D20360C890022EA37 /* CSComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSComponent.swift; sourceTree = "<group>"; };
 		E990F89F20360FEC0022EA37 /* CSUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSUser.swift; sourceTree = "<group>"; };
 		E990F8A1203615FF0022EA37 /* Canvas.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Canvas.storyboard; sourceTree = "<group>"; };
 		E990F8A3203616350022EA37 /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		E990F8A7203618E20022EA37 /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
 		E9C8EEEA204F702A0076D884 /* UICanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICanvas.swift; sourceTree = "<group>"; };
-		E9C8EEEC204F79A60076D884 /* UniversalExtentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalExtentions.swift; path = "../../../../Developer/My Projects/Swift Source Files/UniversalExtentions.swift"; sourceTree = "<group>"; };
 		E9E583882032A7EF007E4476 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E9E5838C2032AB1B007E4476 /* PresistenceStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceStack.swift; sourceTree = "<group>"; };
 		E9F4CCC82048C32A00E9CDDC /* SplashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 			children = (
 				E913D499202A5F1200243BDE /* CircuitStudioAPI.swift */,
 				AEFF947C20375629000C353F /* AlertHelper.swift */,
-				E9C8EEEC204F79A60076D884 /* UniversalExtentions.swift */,
+				E97AE1FB206D951E0014CE18 /* UniversalExtentions.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -620,7 +620,7 @@
 			files = (
 				AEFF9479203619D6000C353F /* LoginViewController.swift in Sources */,
 				E9F4CCCF2048E1AD00E9CDDC /* NetworkStack.swift in Sources */,
-				E9C8EEED204F79A60076D884 /* UniversalExtentions.swift in Sources */,
+				E97AE1FC206D951E0014CE18 /* UniversalExtentions.swift in Sources */,
 				E9335DB02011214100C9CC9E /* circuit_studio.xcdatamodeld in Sources */,
 				E913D49A202A5F1200243BDE /* CircuitStudioAPI.swift in Sources */,
 				E9FF52FE20362F7E000ADB30 /* ComponentsToolbarCollectionViewController.swift in Sources */,
